@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="ua" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Front-end
+  #
+
+
+  Як браузер визначає, чи ми можемо спілкуватися між вкладками?
+  #
+
+
+  Що таке Content Security Policy?
+  #
+
+
+  Як уникнути завантаження кешованих файлів скриптів і стилів?
+  #
+
+
+  Що таке requestAnimationFrame?
+  #
+
+
+  Розкажіть про мікросервісну архітектуру Front-end App.
+  #
+
+
+  Що таке Shadow DOM?
+  #
+
+
+  Порівняйте nextElementSibling та nextSibling.
+  #
+
+
+  Які знаєте метрики вебсайту?
+  #
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://toruse.github.io/javascript300/senior/frontend/">
+  <meta property="og:site_name" content="Співбесіда: Запитання по JavaScript">
+  <meta property="og:title" content="Front-end">
+  <meta property="og:description" content="Front-end#Як браузер визначає, чи ми можемо спілкуватися між вкладками?#Що таке Content Security Policy?#Як уникнути завантаження кешованих файлів скриптів і стилів?#Що таке requestAnimationFrame?#Розкажіть про мікросервісну архітектуру Front-end App.#Що таке Shadow DOM?#Порівняйте nextElementSibling та nextSibling.#Які знаєте метрики вебсайту?#">
+  <meta property="og:locale" content="ua">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="senior">
+<title>Front-end | Співбесіда: Запитання по JavaScript</title>
+<link rel="icon" href="/javascript300/favicon.png" >
+<link rel="manifest" href="/javascript300/manifest.json">
+<link rel="canonical" href="https://toruse.github.io/javascript300/senior/frontend/">
+  <link rel="alternate" hreflang="en" href="https://toruse.github.io/javascript300/en/senior/frontend/" title="Front-end">
+  <link rel="alternate" hreflang="ru" href="https://toruse.github.io/javascript300/ru/senior/frontend/" title="Front-end">
+<link rel="stylesheet" href="/javascript300/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-STM9NRDDSY"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-STM9NRDDSY');
+        }
+      </script><!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/javascript300/"><span>Співбесіда: Запитання по JavaScript</span>
+  </a>
+</h2>
+
+
+
+
+  
+
+
+
+  
+    
+  
+    
+  
+
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/javascript300/svg/translate.svg" class="book-icon" alt="Languages" />
+        Українська
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/javascript300/en/senior/frontend/">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="/javascript300/ru/senior/frontend/">
+          Русский
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-65ce2ee62f91c1ebf89c0d1ca25ae4d8" class="toggle"  />
+    <label for="section-65ce2ee62f91c1ebf89c0d1ca25ae4d8" class="flex justify-between">
+      <a role="button" class="">Junior</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/junior/general/" class="">Загальні</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/junior/jscore/" class="">JS Core</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/junior/functions/" class="">Функції</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/junior/frontend/" class="">Front-end</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/junior/layout/" class="">Верстка</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/junior/angular/" class="">Angular</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/junior/react/" class="">React</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/junior/backend/" class="">Back-end</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/junior/databases/" class="">Бази даних</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/junior/tools/" class="">Інструменти</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/junior/practice/" class="">Практичні завдання</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6725b37851504fb359e7622d797d94ee" class="toggle"  />
+    <label for="section-6725b37851504fb359e7622d797d94ee" class="flex justify-between">
+      <a role="button" class="">Middle</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/middle/general/" class="">Загальні</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/middle/jscore/" class="">JS Core</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/middle/functions/" class="">Функції</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/middle/frontend/" class="">Front-end</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/middle/layout/" class="">Верстка</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/middle/angular/" class="">Angular</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/middle/react/" class="">React</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/middle/backend/" class="">Back-end</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/middle/databases/" class="">Бази даних</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/middle/tools/" class="">Інструменти та інше</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/middle/practice/" class="">Практичні завдання</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-63d3c4e6068a79a39d747c74eaae9d46" class="toggle" checked />
+    <label for="section-63d3c4e6068a79a39d747c74eaae9d46" class="flex justify-between">
+      <a role="button" class="">Senior</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/senior/general/" class="">Загальні</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/senior/jscore/" class="">JS Core</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/senior/frontend/" class="active">Front-end</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/senior/angular/" class="">Angular</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/senior/backend/" class="">Back-end</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/senior/databases/" class="">Бази даних</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/senior/tools/" class="">Інструменти</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/senior/practice/" class="">Практичні завдання</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/javascript300/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Front-end</h3>
+
+  <label for="toc-control">
+    
+    <img src="/javascript300/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#як-браузер-визначає-чи-ми-можемо-спілкуватися-між-вкладками">Як браузер визначає, чи ми можемо спілкуватися між вкладками?</a></li>
+    <li><a href="#що-таке-content-security-policy">Що таке Content Security Policy?</a></li>
+    <li><a href="#як-уникнути-завантаження-кешованих-файлів-скриптів-і-стилів">Як уникнути завантаження кешованих файлів скриптів і стилів?</a></li>
+    <li><a href="#що-таке-requestanimationframe">Що таке requestAnimationFrame?</a></li>
+    <li><a href="#розкажіть-про-мікросервісну-архітектуру-front-end-app">Розкажіть про мікросервісну архітектуру Front-end App.</a></li>
+    <li><a href="#що-таке-shadow-dom">Що таке Shadow DOM?</a></li>
+    <li><a href="#порівняйте-nextelementsibling-та-nextsibling">Порівняйте nextElementSibling та nextSibling.</a></li>
+    <li><a href="#які-знаєте-метрики-вебсайту">Які знаєте метрики вебсайту?</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="front-end">
+  Front-end
+  <a class="anchor" href="#front-end">#</a>
+</h1>
+<h2 id="як-браузер-визначає-чи-ми-можемо-спілкуватися-між-вкладками">
+  Як браузер визначає, чи ми можемо спілкуватися між вкладками?
+  <a class="anchor" href="#%d1%8f%d0%ba-%d0%b1%d1%80%d0%b0%d1%83%d0%b7%d0%b5%d1%80-%d0%b2%d0%b8%d0%b7%d0%bd%d0%b0%d1%87%d0%b0%d1%94-%d1%87%d0%b8-%d0%bc%d0%b8-%d0%bc%d0%be%d0%b6%d0%b5%d0%bc%d0%be-%d1%81%d0%bf%d1%96%d0%bb%d0%ba%d1%83%d0%b2%d0%b0%d1%82%d0%b8%d1%81%d1%8f-%d0%bc%d1%96%d0%b6-%d0%b2%d0%ba%d0%bb%d0%b0%d0%b4%d0%ba%d0%b0%d0%bc%d0%b8">#</a>
+</h2>
+<h2 id="що-таке-content-security-policy">
+  Що таке Content Security Policy?
+  <a class="anchor" href="#%d1%89%d0%be-%d1%82%d0%b0%d0%ba%d0%b5-content-security-policy">#</a>
+</h2>
+<h2 id="як-уникнути-завантаження-кешованих-файлів-скриптів-і-стилів">
+  Як уникнути завантаження кешованих файлів скриптів і стилів?
+  <a class="anchor" href="#%d1%8f%d0%ba-%d1%83%d0%bd%d0%b8%d0%ba%d0%bd%d1%83%d1%82%d0%b8-%d0%b7%d0%b0%d0%b2%d0%b0%d0%bd%d1%82%d0%b0%d0%b6%d0%b5%d0%bd%d0%bd%d1%8f-%d0%ba%d0%b5%d1%88%d0%be%d0%b2%d0%b0%d0%bd%d0%b8%d1%85-%d1%84%d0%b0%d0%b9%d0%bb%d1%96%d0%b2-%d1%81%d0%ba%d1%80%d0%b8%d0%bf%d1%82%d1%96%d0%b2-%d1%96-%d1%81%d1%82%d0%b8%d0%bb%d1%96%d0%b2">#</a>
+</h2>
+<h2 id="що-таке-requestanimationframe">
+  Що таке requestAnimationFrame?
+  <a class="anchor" href="#%d1%89%d0%be-%d1%82%d0%b0%d0%ba%d0%b5-requestanimationframe">#</a>
+</h2>
+<h2 id="розкажіть-про-мікросервісну-архітектуру-front-end-app">
+  Розкажіть про мікросервісну архітектуру Front-end App.
+  <a class="anchor" href="#%d1%80%d0%be%d0%b7%d0%ba%d0%b0%d0%b6%d1%96%d1%82%d1%8c-%d0%bf%d1%80%d0%be-%d0%bc%d1%96%d0%ba%d1%80%d0%be%d1%81%d0%b5%d1%80%d0%b2%d1%96%d1%81%d0%bd%d1%83-%d0%b0%d1%80%d1%85%d1%96%d1%82%d0%b5%d0%ba%d1%82%d1%83%d1%80%d1%83-front-end-app">#</a>
+</h2>
+<h2 id="що-таке-shadow-dom">
+  Що таке Shadow DOM?
+  <a class="anchor" href="#%d1%89%d0%be-%d1%82%d0%b0%d0%ba%d0%b5-shadow-dom">#</a>
+</h2>
+<h2 id="порівняйте-nextelementsibling-та-nextsibling">
+  Порівняйте nextElementSibling та nextSibling.
+  <a class="anchor" href="#%d0%bf%d0%be%d1%80%d1%96%d0%b2%d0%bd%d1%8f%d0%b9%d1%82%d0%b5-nextelementsibling-%d1%82%d0%b0-nextsibling">#</a>
+</h2>
+<h2 id="які-знаєте-метрики-вебсайту">
+  Які знаєте метрики вебсайту?
+  <a class="anchor" href="#%d1%8f%d0%ba%d1%96-%d0%b7%d0%bd%d0%b0%d1%94%d1%82%d0%b5-%d0%bc%d0%b5%d1%82%d1%80%d0%b8%d0%ba%d0%b8-%d0%b2%d0%b5%d0%b1%d1%81%d0%b0%d0%b9%d1%82%d1%83">#</a>
+</h2>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#як-браузер-визначає-чи-ми-можемо-спілкуватися-між-вкладками">Як браузер визначає, чи ми можемо спілкуватися між вкладками?</a></li>
+    <li><a href="#що-таке-content-security-policy">Що таке Content Security Policy?</a></li>
+    <li><a href="#як-уникнути-завантаження-кешованих-файлів-скриптів-і-стилів">Як уникнути завантаження кешованих файлів скриптів і стилів?</a></li>
+    <li><a href="#що-таке-requestanimationframe">Що таке requestAnimationFrame?</a></li>
+    <li><a href="#розкажіть-про-мікросервісну-архітектуру-front-end-app">Розкажіть про мікросервісну архітектуру Front-end App.</a></li>
+    <li><a href="#що-таке-shadow-dom">Що таке Shadow DOM?</a></li>
+    <li><a href="#порівняйте-nextelementsibling-та-nextsibling">Порівняйте nextElementSibling та nextSibling.</a></li>
+    <li><a href="#які-знаєте-метрики-вебсайту">Які знаєте метрики вебсайту?</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

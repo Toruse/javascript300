@@ -1,7 +1,11 @@
-baseURL = 'https://example.com/'
+baseURL = 'https://toruse.github.io/javascript300'
 theme = 'hugo-book'
 publishDir = 'docs'
 defaultContentLanguage = 'ua'
+
+[services]
+  [services.googleAnalytics]
+    id = 'G-STM9NRDDSY'
 
 [languages]
 [languages.ua]

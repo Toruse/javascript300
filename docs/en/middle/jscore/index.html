@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  JS Core
+  #
+
+
+  Які типи даних бувають у JavaScript? Який буде результат виконання коду?
+  #
+
+let firstObj = { name: &#39;Hello&#39; };
+
+let secondObj = firstObj;
+
+firstObj = { name: &#39;Bye&#39; };
+
+console.log(secondObj.name);
+
+  Що таке temporal dead zone?
+  #
+
+
+  Як працює boxing / unboxing у JavaScript?
+  #
+
+
+  У чому різниця між оператором in і методом hasOwnProperty?
+  #
+
+
+  Опишіть, за допомогою чого в JS реалізуються такі ООП-парадигми, як інкапсуляція, поліморфізм, абстракція?
+  #
+
+
+  Що таке прототип? Як працює прототипне наслідування в JS? Поясніть роботу коду.
+  #
+
+function Main () {}
+Main.prototype = { protected: true };
+
+const obj = new Main();
+Main.prototype = { protected: false };
+
+console.log(&#39;Object protection: &#39;, obj.protected); 
+
+  Яка різниця між композицією та наслідуванням?
+  #
+
+
+  Чому не варто використовувати конструктори типу new String?
+  #
+
+
+  Розкажіть про базовий пристрій і механізм роботи Event loop.
+  #
+
+
+  Що таке записи (records) і кортежі (tuples)? Чим вони відрізняються від звичайних об’єктів?
+  #
+
+
+  Які відмінності в поведінці ES5 функції-конструктора та ES2015 класу?
+  #
+
+
+  Як реалізувати патерн «Модуль»?
+  #
+
+
+  Чому typeof null повертає object?
+  #
+
+
+  Що таке приведення (перетворення) типів у JS?
+  #
+
+
+  Що таке явне і неявне приведення (перетворення) типів даних у JS? Як відбувається перетворення типів у таких прикладах:
+  #
+
+{}&#43;[]&#43;{}&#43;[1]
+!!&#34;false&#34; == !!&#34;true&#34;
+[&#39;x&#39;] == &#39;x&#39;
+
+  Що таке Garbage Collector?
+  #
+
+
+  Опишіть основні принципи роботи «збирача сміття» у JS-рушіях (engines).
+  #
+
+
+  Опишіть призначення і принципи роботи з колекціями WeakMap і WeakSet? Чим вони відрізняються від колекцій Map і Set відповідно?
+  #
+
+
+  Чим відрізняється Observable від Promise?
+  #
+
+
+  Що таке Promise? Назвіть порядок виконання then і catch у ланцюжку.
+  #
+
+Promise.resolve(10)
+  .then(e =&gt; console.log(e)) // ??
+  .then(e =&gt; Promise.resolve(e))
+  .then(console.log) // ??
+  .then(e =&gt; {
+    if (!e) {
+      throw &#39;Error caught&#39;;
+    }
+  })
+  .catch(e =&gt; {
+    console.log(e); // ??
+    return new Error(&#39;New error&#39;);
+  })
+  .then(e =&gt; {
+    console.log(e.message); // ??
+  })
+  .catch(e =&gt; {
+    console.log(e.message); // ??
+  });
+
+  Розкажіть про послідовне і паралельне виконання асинхронних функцій. У чому різниця між Promise.all () і Promise.allSettled ()?
+  #
+
+
+  Що таке дескриптори властивостей об’єктів? Розкажіть про їхнє практичне застосування.
+  #
+
+
+  Назвіть кілька способів створення незмінного об’єкта в JavaScript.
+  #
+
+
+  Як створити властивість в об’єкта, яку не можна буде змінити?
+  #
+
+
+  Навіщо потрібен конструктор Proxy? Наведіть приклад використання.
+  #
+
+
+  Що таке ArrayBuffer? У чому різниця між Uint32Array і Float32Array? Який результат виконання коду?
+  #
+
+const uint32Array = new Uint32Array();
+Array.isArray(uint32Array);
+
+  Яким буде результат порівняння?
+  #
+
+const url = “HTTPs://xyz.com/path&lt;to&gt;page.html”;
+encodeURI(url) == encodeURIComponent(url); 
+
+  Розкажіть про генератори та ітератори.
+  #
+
+
+  Поясніть, що робить наведений код:
+  #
+
+function * fn(num) {
+  for (let i = 0; i &lt; num; i &#43;= 1) {
+    yield console.log(i);
+  }
+}
+const loop = fn(5);
+loop.next();
+loop.next();
+
+  Розкажіть про тип даних Symbol і його практичне застосування. Як перевести число з 10-розрядної системи в 16(2,8)-розрядну систему числення?
+  #
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://toruse.github.io/javascript300/en/middle/jscore/">
+  <meta property="og:site_name" content="Interview: JavaScript Questions">
+  <meta property="og:title" content="JS Core">
+  <meta property="og:description" content="JS Core#Які типи даних бувають у JavaScript? Який буде результат виконання коду?#let firstObj = { name: &#39;Hello&#39; }; let secondObj = firstObj; firstObj = { name: &#39;Bye&#39; }; console.log(secondObj.name); Що таке temporal dead zone?#Як працює boxing / unboxing у JavaScript?#У чому різниця між оператором in і методом hasOwnProperty?#Опишіть, за допомогою чого в JS реалізуються такі ООП-парадигми, як інкапсуляція, поліморфізм, абстракція?#Що таке прототип? Як працює прототипне наслідування в JS? Поясніть роботу коду.#function Main () {} Main.prototype = { protected: true }; const obj = new Main(); Main.prototype = { protected: false }; console.log(&#39;Object protection: &#39;, obj.protected); Яка різниця між композицією та наслідуванням?#Чому не варто використовувати конструктори типу new String?#Розкажіть про базовий пристрій і механізм роботи Event loop.#Що таке записи (records) і кортежі (tuples)? Чим вони відрізняються від звичайних об’єктів?#Які відмінності в поведінці ES5 функції-конструктора та ES2015 класу?#Як реалізувати патерн «Модуль»?#Чому typeof null повертає object?#Що таке приведення (перетворення) типів у JS?#Що таке явне і неявне приведення (перетворення) типів даних у JS? Як відбувається перетворення типів у таких прикладах:#{}&#43;[]&#43;{}&#43;[1] !!&#34;false&#34; == !!&#34;true&#34; [&#39;x&#39;] == &#39;x&#39; Що таке Garbage Collector?#Опишіть основні принципи роботи «збирача сміття» у JS-рушіях (engines).#Опишіть призначення і принципи роботи з колекціями WeakMap і WeakSet? Чим вони відрізняються від колекцій Map і Set відповідно?#Чим відрізняється Observable від Promise?#Що таке Promise? Назвіть порядок виконання then і catch у ланцюжку.#Promise.resolve(10) .then(e =&gt; console.log(e)) // ?? .then(e =&gt; Promise.resolve(e)) .then(console.log) // ?? .then(e =&gt; { if (!e) { throw &#39;Error caught&#39;; } }) .catch(e =&gt; { console.log(e); // ?? return new Error(&#39;New error&#39;); }) .then(e =&gt; { console.log(e.message); // ?? }) .catch(e =&gt; { console.log(e.message); // ?? }); Розкажіть про послідовне і паралельне виконання асинхронних функцій. У чому різниця між Promise.all () і Promise.allSettled ()?#Що таке дескриптори властивостей об’єктів? Розкажіть про їхнє практичне застосування.#Назвіть кілька способів створення незмінного об’єкта в JavaScript.#Як створити властивість в об’єкта, яку не можна буде змінити?#Навіщо потрібен конструктор Proxy? Наведіть приклад використання.#Що таке ArrayBuffer? У чому різниця між Uint32Array і Float32Array? Який результат виконання коду?#const uint32Array = new Uint32Array(); Array.isArray(uint32Array); Яким буде результат порівняння?#const url = “HTTPs://xyz.com/path&lt;to&gt;page.html”; encodeURI(url) == encodeURIComponent(url); Розкажіть про генератори та ітератори.#Поясніть, що робить наведений код:#function * fn(num) { for (let i = 0; i &lt; num; i &#43;= 1) { yield console.log(i); } } const loop = fn(5); loop.next(); loop.next(); Розкажіть про тип даних Symbol і його практичне застосування. Як перевести число з 10-розрядної системи в 16(2,8)-розрядну систему числення?#">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="middle">
+<title>JS Core | Interview: JavaScript Questions</title>
+<link rel="icon" href="/javascript300/favicon.png" >
+<link rel="manifest" href="/javascript300/manifest.json">
+<link rel="canonical" href="https://toruse.github.io/javascript300/en/middle/jscore/">
+  <link rel="alternate" hreflang="ua" href="https://toruse.github.io/javascript300/middle/jscore/" title="JS Core">
+  <link rel="alternate" hreflang="ru" href="https://toruse.github.io/javascript300/ru/middle/jscore/" title="JS Core">
+<link rel="stylesheet" href="/javascript300/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-STM9NRDDSY"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-STM9NRDDSY');
+        }
+      </script><!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/javascript300/en/"><span>Interview: JavaScript Questions</span>
+  </a>
+</h2>
+
+
+
+
+  
+
+
+
+  
+    
+  
+    
+  
+
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/javascript300/svg/translate.svg" class="book-icon" alt="Languages" />
+        English
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/javascript300/middle/jscore/">
+          Українська
+        </a>
+      </li>
+      
+      <li>
+        <a href="/javascript300/ru/middle/jscore/">
+          Русский
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f375aaff9f86561f2bd38171f35eb4d1" class="toggle"  />
+    <label for="section-f375aaff9f86561f2bd38171f35eb4d1" class="flex justify-between">
+      <a role="button" class="">Junior</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/en/junior/general/" class="">General</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/en/junior/jscore/" class="">JS Core</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/en/junior/functions/" class="">Функції</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/en/junior/frontend/" class="">Front-end</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/en/junior/layout/" class="">Верстка</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/en/junior/angular/" class="">Angular</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/en/junior/react/" class="">React</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/en/junior/backend/" class="">Back-end</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/en/junior/databases/" class="">Бази даних</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/en/junior/tools/" class="">Інструменти</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/en/junior/practice/" class="">Практичні завдання</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-365fdf8b99301336d40417f332f351a2" class="toggle" checked />
+    <label for="section-365fdf8b99301336d40417f332f351a2" class="flex justify-between">
+      <a role="button" class="">Middle</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/en/middle/general/" class="">Загальні</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/en/middle/jscore/" class="active">JS Core</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/en/middle/functions/" class="">Функції</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/en/middle/frontend/" class="">Front-end</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/en/middle/layout/" class="">Верстка</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/en/middle/angular/" class="">Angular</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/en/middle/react/" class="">React</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/en/middle/backend/" class="">Back-end</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/en/middle/databases/" class="">Бази даних</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/en/middle/tools/" class="">Інструменти та інше</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/en/middle/practice/" class="">Практичні завдання</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-67ac81358667bed489aba396332b4c8a" class="toggle"  />
+    <label for="section-67ac81358667bed489aba396332b4c8a" class="flex justify-between">
+      <a role="button" class="">Senior</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/en/senior/general/" class="">Загальні</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/en/senior/jscore/" class="">JS Core</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/en/senior/frontend/" class="">Front-end</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/en/senior/angular/" class="">Angular</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/en/senior/backend/" class="">Back-end</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/en/senior/databases/" class="">Бази даних</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/en/senior/tools/" class="">Інструменти</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/en/senior/practice/" class="">Практичні завдання</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/javascript300/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>JS Core</h3>
+
+  <label for="toc-control">
+    
+    <img src="/javascript300/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#які-типи-даних-бувають-у-javascript-який-буде-результат-виконання-коду">Які типи даних бувають у JavaScript? Який буде результат виконання коду?</a></li>
+    <li><a href="#що-таке-temporal-dead-zone">Що таке temporal dead zone?</a></li>
+    <li><a href="#як-працює-boxing--unboxing-у-javascript">Як працює boxing / unboxing у JavaScript?</a></li>
+    <li><a href="#у-чому-різниця-між-оператором-in-і-методом-hasownproperty">У чому різниця між оператором in і методом hasOwnProperty?</a></li>
+    <li><a href="#опишіть-за-допомогою-чого-в-js-реалізуються-такі-ооп-парадигми-як-інкапсуляція-поліморфізм-абстракція">Опишіть, за допомогою чого в JS реалізуються такі ООП-парадигми, як інкапсуляція, поліморфізм, абстракція?</a></li>
+    <li><a href="#що-таке-прототип-як-працює-прототипне-наслідування-в-js-поясніть-роботу-коду">Що таке прототип? Як працює прототипне наслідування в JS? Поясніть роботу коду.</a></li>
+    <li><a href="#яка-різниця-між-композицією-та-наслідуванням">Яка різниця між композицією та наслідуванням?</a></li>
+    <li><a href="#чому-не-варто-використовувати-конструктори-типу-new-string">Чому не варто використовувати конструктори типу new String?</a></li>
+    <li><a href="#розкажіть-про-базовий-пристрій-і-механізм-роботи-event-loop">Розкажіть про базовий пристрій і механізм роботи Event loop.</a></li>
+    <li><a href="#що-таке-записи-records-і-кортежі-tuples-чим-вони-відрізняються-від-звичайних-обєктів">Що таке записи (records) і кортежі (tuples)? Чим вони відрізняються від звичайних об’єктів?</a></li>
+    <li><a href="#які-відмінності-в-поведінці-es5-функції-конструктора-та-es2015-класу">Які відмінності в поведінці ES5 функції-конструктора та ES2015 класу?</a></li>
+    <li><a href="#як-реалізувати-патерн-модуль">Як реалізувати патерн «Модуль»?</a></li>
+    <li><a href="#чому-typeof-null-повертає-object">Чому typeof null повертає object?</a></li>
+    <li><a href="#що-таке-приведення-перетворення-типів-у-js">Що таке приведення (перетворення) типів у JS?</a></li>
+    <li><a href="#що-таке-явне-і-неявне-приведення-перетворення-типів-даних-у-js-як-відбувається-перетворення-типів-у-таких-прикладах">Що таке явне і неявне приведення (перетворення) типів даних у JS? Як відбувається перетворення типів у таких прикладах:</a></li>
+    <li><a href="#що-таке-garbage-collector">Що таке Garbage Collector?</a></li>
+    <li><a href="#опишіть-основні-принципи-роботи-збирача-сміття-у-js-рушіях-engines">Опишіть основні принципи роботи «збирача сміття» у JS-рушіях (engines).</a></li>
+    <li><a href="#опишіть-призначення-і-принципи-роботи-з-колекціями-weakmap-і-weakset-чим-вони-відрізняються-від-колекцій-map-і-set-відповідно">Опишіть призначення і принципи роботи з колекціями WeakMap і WeakSet? Чим вони відрізняються від колекцій Map і Set відповідно?</a></li>
+    <li><a href="#чим-відрізняється-observable-від-promise">Чим відрізняється Observable від Promise?</a></li>
+    <li><a href="#що-таке-promise-назвіть-порядок-виконання-then-і-catch-у-ланцюжку">Що таке Promise? Назвіть порядок виконання then і catch у ланцюжку.</a></li>
+    <li><a href="#розкажіть-про-послідовне-і-паралельне-виконання-асинхронних-функцій-у-чому-різниця-між-promiseall--і-promiseallsettled-">Розкажіть про послідовне і паралельне виконання асинхронних функцій. У чому різниця між Promise.all () і Promise.allSettled ()?</a></li>
+    <li><a href="#що-таке-дескриптори-властивостей-обєктів-розкажіть-про-їхнє-практичне-застосування">Що таке дескриптори властивостей об’єктів? Розкажіть про їхнє практичне застосування.</a></li>
+    <li><a href="#назвіть-кілька-способів-створення-незмінного-обєкта-в-javascript">Назвіть кілька способів створення незмінного об’єкта в JavaScript.</a></li>
+    <li><a href="#як-створити-властивість-в-обєкта-яку-не-можна-буде-змінити">Як створити властивість в об’єкта, яку не можна буде змінити?</a></li>
+    <li><a href="#навіщо-потрібен-конструктор-proxy-наведіть-приклад-використання">Навіщо потрібен конструктор Proxy? Наведіть приклад використання.</a></li>
+    <li><a href="#що-таке-arraybuffer-у-чому-різниця-між-uint32array-і-float32array-який-результат-виконання-коду">Що таке ArrayBuffer? У чому різниця між Uint32Array і Float32Array? Який результат виконання коду?</a></li>
+    <li><a href="#яким-буде-результат-порівняння">Яким буде результат порівняння?</a></li>
+    <li><a href="#розкажіть-про-генератори-та-ітератори">Розкажіть про генератори та ітератори.</a></li>
+    <li><a href="#поясніть-що-робить-наведений-код">Поясніть, що робить наведений код:</a></li>
+    <li><a href="#розкажіть-про-тип-даних-symbol-і-його-практичне-застосування-як-перевести-число-з-10-розрядної-системи-в-1628-розрядну-систему-числення">Розкажіть про тип даних Symbol і його практичне застосування. Як перевести число з 10-розрядної системи в 16(2,8)-розрядну систему числення?</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="js-core">
+  JS Core
+  <a class="anchor" href="#js-core">#</a>
+</h1>
+<h2 id="які-типи-даних-бувають-у-javascript-який-буде-результат-виконання-коду">
+  Які типи даних бувають у JavaScript? Який буде результат виконання коду?
+  <a class="anchor" href="#%d1%8f%d0%ba%d1%96-%d1%82%d0%b8%d0%bf%d0%b8-%d0%b4%d0%b0%d0%bd%d0%b8%d1%85-%d0%b1%d1%83%d0%b2%d0%b0%d1%8e%d1%82%d1%8c-%d1%83-javascript-%d1%8f%d0%ba%d0%b8%d0%b9-%d0%b1%d1%83%d0%b4%d0%b5-%d1%80%d0%b5%d0%b7%d1%83%d0%bb%d1%8c%d1%82%d0%b0%d1%82-%d0%b2%d0%b8%d0%ba%d0%be%d0%bd%d0%b0%d0%bd%d0%bd%d1%8f-%d0%ba%d0%be%d0%b4%d1%83">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">firstObj</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Hello&#39;</span> };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">secondObj</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">firstObj</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">firstObj</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Bye&#39;</span> };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">secondObj</span>.<span style="color:#a6e22e">name</span>);
+</span></span></code></pre></div><h2 id="що-таке-temporal-dead-zone">
+  Що таке temporal dead zone?
+  <a class="anchor" href="#%d1%89%d0%be-%d1%82%d0%b0%d0%ba%d0%b5-temporal-dead-zone">#</a>
+</h2>
+<h2 id="як-працює-boxing--unboxing-у-javascript">
+  Як працює boxing / unboxing у JavaScript?
+  <a class="anchor" href="#%d1%8f%d0%ba-%d0%bf%d1%80%d0%b0%d1%86%d1%8e%d1%94-boxing--unboxing-%d1%83-javascript">#</a>
+</h2>
+<h2 id="у-чому-різниця-між-оператором-in-і-методом-hasownproperty">
+  У чому різниця між оператором in і методом hasOwnProperty?
+  <a class="anchor" href="#%d1%83-%d1%87%d0%be%d0%bc%d1%83-%d1%80%d1%96%d0%b7%d0%bd%d0%b8%d1%86%d1%8f-%d0%bc%d1%96%d0%b6-%d0%be%d0%bf%d0%b5%d1%80%d0%b0%d1%82%d0%be%d1%80%d0%be%d0%bc-in-%d1%96-%d0%bc%d0%b5%d1%82%d0%be%d0%b4%d0%be%d0%bc-hasownproperty">#</a>
+</h2>
+<h2 id="опишіть-за-допомогою-чого-в-js-реалізуються-такі-ооп-парадигми-як-інкапсуляція-поліморфізм-абстракція">
+  Опишіть, за допомогою чого в JS реалізуються такі ООП-парадигми, як інкапсуляція, поліморфізм, абстракція?
+  <a class="anchor" href="#%d0%be%d0%bf%d0%b8%d1%88%d1%96%d1%82%d1%8c-%d0%b7%d0%b0-%d0%b4%d0%be%d0%bf%d0%be%d0%bc%d0%be%d0%b3%d0%be%d1%8e-%d1%87%d0%be%d0%b3%d0%be-%d0%b2-js-%d1%80%d0%b5%d0%b0%d0%bb%d1%96%d0%b7%d1%83%d1%8e%d1%82%d1%8c%d1%81%d1%8f-%d1%82%d0%b0%d0%ba%d1%96-%d0%be%d0%be%d0%bf-%d0%bf%d0%b0%d1%80%d0%b0%d0%b4%d0%b8%d0%b3%d0%bc%d0%b8-%d1%8f%d0%ba-%d1%96%d0%bd%d0%ba%d0%b0%d0%bf%d1%81%d1%83%d0%bb%d1%8f%d1%86%d1%96%d1%8f-%d0%bf%d0%be%d0%bb%d1%96%d0%bc%d0%be%d1%80%d1%84%d1%96%d0%b7%d0%bc-%d0%b0%d0%b1%d1%81%d1%82%d1%80%d0%b0%d0%ba%d1%86%d1%96%d1%8f">#</a>
+</h2>
+<h2 id="що-таке-прототип-як-працює-прототипне-наслідування-в-js-поясніть-роботу-коду">
+  Що таке прототип? Як працює прототипне наслідування в JS? Поясніть роботу коду.
+  <a class="anchor" href="#%d1%89%d0%be-%d1%82%d0%b0%d0%ba%d0%b5-%d0%bf%d1%80%d0%be%d1%82%d0%be%d1%82%d0%b8%d0%bf-%d1%8f%d0%ba-%d0%bf%d1%80%d0%b0%d1%86%d1%8e%d1%94-%d0%bf%d1%80%d0%be%d1%82%d0%be%d1%82%d0%b8%d0%bf%d0%bd%d0%b5-%d0%bd%d0%b0%d1%81%d0%bb%d1%96%d0%b4%d1%83%d0%b2%d0%b0%d0%bd%d0%bd%d1%8f-%d0%b2-js-%d0%bf%d0%be%d1%8f%d1%81%d0%bd%d1%96%d1%82%d1%8c-%d1%80%d0%be%d0%b1%d0%be%d1%82%d1%83-%d0%ba%d0%be%d0%b4%d1%83">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Main</span> () {}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Main</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> { <span style="color:#66d9ef">protected</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">obj</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Main</span>();
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Main</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> { <span style="color:#66d9ef">protected</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span> };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Object protection: &#39;</span>, <span style="color:#a6e22e">obj</span>.<span style="color:#66d9ef">protected</span>); 
+</span></span></code></pre></div><h2 id="яка-різниця-між-композицією-та-наслідуванням">
+  Яка різниця між композицією та наслідуванням?
+  <a class="anchor" href="#%d1%8f%d0%ba%d0%b0-%d1%80%d1%96%d0%b7%d0%bd%d0%b8%d1%86%d1%8f-%d0%bc%d1%96%d0%b6-%d0%ba%d0%be%d0%bc%d0%bf%d0%be%d0%b7%d0%b8%d1%86%d1%96%d1%94%d1%8e-%d1%82%d0%b0-%d0%bd%d0%b0%d1%81%d0%bb%d1%96%d0%b4%d1%83%d0%b2%d0%b0%d0%bd%d0%bd%d1%8f%d0%bc">#</a>
+</h2>
+<h2 id="чому-не-варто-використовувати-конструктори-типу-new-string">
+  Чому не варто використовувати конструктори типу new String?
+  <a class="anchor" href="#%d1%87%d0%be%d0%bc%d1%83-%d0%bd%d0%b5-%d0%b2%d0%b0%d1%80%d1%82%d0%be-%d0%b2%d0%b8%d0%ba%d0%be%d1%80%d0%b8%d1%81%d1%82%d0%be%d0%b2%d1%83%d0%b2%d0%b0%d1%82%d0%b8-%d0%ba%d0%be%d0%bd%d1%81%d1%82%d1%80%d1%83%d0%ba%d1%82%d0%be%d1%80%d0%b8-%d1%82%d0%b8%d0%bf%d1%83-new-string">#</a>
+</h2>
+<h2 id="розкажіть-про-базовий-пристрій-і-механізм-роботи-event-loop">
+  Розкажіть про базовий пристрій і механізм роботи Event loop.
+  <a class="anchor" href="#%d1%80%d0%be%d0%b7%d0%ba%d0%b0%d0%b6%d1%96%d1%82%d1%8c-%d0%bf%d1%80%d0%be-%d0%b1%d0%b0%d0%b7%d0%be%d0%b2%d0%b8%d0%b9-%d0%bf%d1%80%d0%b8%d1%81%d1%82%d1%80%d1%96%d0%b9-%d1%96-%d0%bc%d0%b5%d1%85%d0%b0%d0%bd%d1%96%d0%b7%d0%bc-%d1%80%d0%be%d0%b1%d0%be%d1%82%d0%b8-event-loop">#</a>
+</h2>
+<h2 id="що-таке-записи-records-і-кортежі-tuples-чим-вони-відрізняються-від-звичайних-обєктів">
+  Що таке записи (records) і кортежі (tuples)? Чим вони відрізняються від звичайних об’єктів?
+  <a class="anchor" href="#%d1%89%d0%be-%d1%82%d0%b0%d0%ba%d0%b5-%d0%b7%d0%b0%d0%bf%d0%b8%d1%81%d0%b8-records-%d1%96-%d0%ba%d0%be%d1%80%d1%82%d0%b5%d0%b6%d1%96-tuples-%d1%87%d0%b8%d0%bc-%d0%b2%d0%be%d0%bd%d0%b8-%d0%b2%d1%96%d0%b4%d1%80%d1%96%d0%b7%d0%bd%d1%8f%d1%8e%d1%82%d1%8c%d1%81%d1%8f-%d0%b2%d1%96%d0%b4-%d0%b7%d0%b2%d0%b8%d1%87%d0%b0%d0%b9%d0%bd%d0%b8%d1%85-%d0%be%d0%b1%d1%94%d0%ba%d1%82%d1%96%d0%b2">#</a>
+</h2>
+<h2 id="які-відмінності-в-поведінці-es5-функції-конструктора-та-es2015-класу">
+  Які відмінності в поведінці ES5 функції-конструктора та ES2015 класу?
+  <a class="anchor" href="#%d1%8f%d0%ba%d1%96-%d0%b2%d1%96%d0%b4%d0%bc%d1%96%d0%bd%d0%bd%d0%be%d1%81%d1%82%d1%96-%d0%b2-%d0%bf%d0%be%d0%b2%d0%b5%d0%b4%d1%96%d0%bd%d1%86%d1%96-es5-%d1%84%d1%83%d0%bd%d0%ba%d1%86%d1%96%d1%97-%d0%ba%d0%be%d0%bd%d1%81%d1%82%d1%80%d1%83%d0%ba%d1%82%d0%be%d1%80%d0%b0-%d1%82%d0%b0-es2015-%d0%ba%d0%bb%d0%b0%d1%81%d1%83">#</a>
+</h2>
+<h2 id="як-реалізувати-патерн-модуль">
+  Як реалізувати патерн «Модуль»?
+  <a class="anchor" href="#%d1%8f%d0%ba-%d1%80%d0%b5%d0%b0%d0%bb%d1%96%d0%b7%d1%83%d0%b2%d0%b0%d1%82%d0%b8-%d0%bf%d0%b0%d1%82%d0%b5%d1%80%d0%bd-%d0%bc%d0%be%d0%b4%d1%83%d0%bb%d1%8c">#</a>
+</h2>
+<h2 id="чому-typeof-null-повертає-object">
+  Чому typeof null повертає object?
+  <a class="anchor" href="#%d1%87%d0%be%d0%bc%d1%83-typeof-null-%d0%bf%d0%be%d0%b2%d0%b5%d1%80%d1%82%d0%b0%d1%94-object">#</a>
+</h2>
+<h2 id="що-таке-приведення-перетворення-типів-у-js">
+  Що таке приведення (перетворення) типів у JS?
+  <a class="anchor" href="#%d1%89%d0%be-%d1%82%d0%b0%d0%ba%d0%b5-%d0%bf%d1%80%d0%b8%d0%b2%d0%b5%d0%b4%d0%b5%d0%bd%d0%bd%d1%8f-%d0%bf%d0%b5%d1%80%d0%b5%d1%82%d0%b2%d0%be%d1%80%d0%b5%d0%bd%d0%bd%d1%8f-%d1%82%d0%b8%d0%bf%d1%96%d0%b2-%d1%83-js">#</a>
+</h2>
+<h2 id="що-таке-явне-і-неявне-приведення-перетворення-типів-даних-у-js-як-відбувається-перетворення-типів-у-таких-прикладах">
+  Що таке явне і неявне приведення (перетворення) типів даних у JS? Як відбувається перетворення типів у таких прикладах:
+  <a class="anchor" href="#%d1%89%d0%be-%d1%82%d0%b0%d0%ba%d0%b5-%d1%8f%d0%b2%d0%bd%d0%b5-%d1%96-%d0%bd%d0%b5%d1%8f%d0%b2%d0%bd%d0%b5-%d0%bf%d1%80%d0%b8%d0%b2%d0%b5%d0%b4%d0%b5%d0%bd%d0%bd%d1%8f-%d0%bf%d0%b5%d1%80%d0%b5%d1%82%d0%b2%d0%be%d1%80%d0%b5%d0%bd%d0%bd%d1%8f-%d1%82%d0%b8%d0%bf%d1%96%d0%b2-%d0%b4%d0%b0%d0%bd%d0%b8%d1%85-%d1%83-js-%d1%8f%d0%ba-%d0%b2%d1%96%d0%b4%d0%b1%d1%83%d0%b2%d0%b0%d1%94%d1%82%d1%8c%d1%81%d1%8f-%d0%bf%d0%b5%d1%80%d0%b5%d1%82%d0%b2%d0%be%d1%80%d0%b5%d0%bd%d0%bd%d1%8f-%d1%82%d0%b8%d0%bf%d1%96%d0%b2-%d1%83-%d1%82%d0%b0%d0%ba%d0%b8%d1%85-%d0%bf%d1%80%d0%b8%d0%ba%d0%bb%d0%b0%d0%b4%d0%b0%d1%85">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>{}<span style="color:#f92672">+</span>[]<span style="color:#f92672">+</span>{}<span style="color:#f92672">+</span>[<span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!!</span><span style="color:#e6db74">&#34;false&#34;</span> <span style="color:#f92672">==</span> <span style="color:#f92672">!!</span><span style="color:#e6db74">&#34;true&#34;</span>
+</span></span><span style="display:flex;"><span>[<span style="color:#e6db74">&#39;x&#39;</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;x&#39;</span>
+</span></span></code></pre></div><h2 id="що-таке-garbage-collector">
+  Що таке Garbage Collector?
+  <a class="anchor" href="#%d1%89%d0%be-%d1%82%d0%b0%d0%ba%d0%b5-garbage-collector">#</a>
+</h2>
+<h2 id="опишіть-основні-принципи-роботи-збирача-сміття-у-js-рушіях-engines">
+  Опишіть основні принципи роботи «збирача сміття» у JS-рушіях (engines).
+  <a class="anchor" href="#%d0%be%d0%bf%d0%b8%d1%88%d1%96%d1%82%d1%8c-%d0%be%d1%81%d0%bd%d0%be%d0%b2%d0%bd%d1%96-%d0%bf%d1%80%d0%b8%d0%bd%d1%86%d0%b8%d0%bf%d0%b8-%d1%80%d0%be%d0%b1%d0%be%d1%82%d0%b8-%d0%b7%d0%b1%d0%b8%d1%80%d0%b0%d1%87%d0%b0-%d1%81%d0%bc%d1%96%d1%82%d1%82%d1%8f-%d1%83-js-%d1%80%d1%83%d1%88%d1%96%d1%8f%d1%85-engines">#</a>
+</h2>
+<h2 id="опишіть-призначення-і-принципи-роботи-з-колекціями-weakmap-і-weakset-чим-вони-відрізняються-від-колекцій-map-і-set-відповідно">
+  Опишіть призначення і принципи роботи з колекціями WeakMap і WeakSet? Чим вони відрізняються від колекцій Map і Set відповідно?
+  <a class="anchor" href="#%d0%be%d0%bf%d0%b8%d1%88%d1%96%d1%82%d1%8c-%d0%bf%d1%80%d0%b8%d0%b7%d0%bd%d0%b0%d1%87%d0%b5%d0%bd%d0%bd%d1%8f-%d1%96-%d0%bf%d1%80%d0%b8%d0%bd%d1%86%d0%b8%d0%bf%d0%b8-%d1%80%d0%be%d0%b1%d0%be%d1%82%d0%b8-%d0%b7-%d0%ba%d0%be%d0%bb%d0%b5%d0%ba%d1%86%d1%96%d1%8f%d0%bc%d0%b8-weakmap-%d1%96-weakset-%d1%87%d0%b8%d0%bc-%d0%b2%d0%be%d0%bd%d0%b8-%d0%b2%d1%96%d0%b4%d1%80%d1%96%d0%b7%d0%bd%d1%8f%d1%8e%d1%82%d1%8c%d1%81%d1%8f-%d0%b2%d1%96%d0%b4-%d0%ba%d0%be%d0%bb%d0%b5%d0%ba%d1%86%d1%96%d0%b9-map-%d1%96-set-%d0%b2%d1%96%d0%b4%d0%bf%d0%be%d0%b2%d1%96%d0%b4%d0%bd%d0%be">#</a>
+</h2>
+<h2 id="чим-відрізняється-observable-від-promise">
+  Чим відрізняється Observable від Promise?
+  <a class="anchor" href="#%d1%87%d0%b8%d0%bc-%d0%b2%d1%96%d0%b4%d1%80%d1%96%d0%b7%d0%bd%d1%8f%d1%94%d1%82%d1%8c%d1%81%d1%8f-observable-%d0%b2%d1%96%d0%b4-promise">#</a>
+</h2>
+<h2 id="що-таке-promise-назвіть-порядок-виконання-then-і-catch-у-ланцюжку">
+  Що таке Promise? Назвіть порядок виконання then і catch у ланцюжку.
+  <a class="anchor" href="#%d1%89%d0%be-%d1%82%d0%b0%d0%ba%d0%b5-promise-%d0%bd%d0%b0%d0%b7%d0%b2%d1%96%d1%82%d1%8c-%d0%bf%d0%be%d1%80%d1%8f%d0%b4%d0%be%d0%ba-%d0%b2%d0%b8%d0%ba%d0%be%d0%bd%d0%b0%d0%bd%d0%bd%d1%8f-then-%d1%96-catch-%d1%83-%d0%bb%d0%b0%d0%bd%d1%86%d1%8e%d0%b6%d0%ba%d1%83">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>Promise.<span style="color:#a6e22e">resolve</span>(<span style="color:#ae81ff">10</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">e</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">e</span>)) <span style="color:#75715e">// ??
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">e</span> =&gt; Promise.<span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">e</span>))
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>) <span style="color:#75715e">// ??
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">e</span> =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">e</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">throw</span> <span style="color:#e6db74">&#39;Error caught&#39;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  })
+</span></span><span style="display:flex;"><span>  .<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">e</span> =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">e</span>); <span style="color:#75715e">// ??
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;New error&#39;</span>);
+</span></span><span style="display:flex;"><span>  })
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">e</span> =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">message</span>); <span style="color:#75715e">// ??
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  })
+</span></span><span style="display:flex;"><span>  .<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">e</span> =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">message</span>); <span style="color:#75715e">// ??
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  });
+</span></span></code></pre></div><h2 id="розкажіть-про-послідовне-і-паралельне-виконання-асинхронних-функцій-у-чому-різниця-між-promiseall--і-promiseallsettled-">
+  Розкажіть про послідовне і паралельне виконання асинхронних функцій. У чому різниця між Promise.all () і Promise.allSettled ()?
+  <a class="anchor" href="#%d1%80%d0%be%d0%b7%d0%ba%d0%b0%d0%b6%d1%96%d1%82%d1%8c-%d0%bf%d1%80%d0%be-%d0%bf%d0%be%d1%81%d0%bb%d1%96%d0%b4%d0%be%d0%b2%d0%bd%d0%b5-%d1%96-%d0%bf%d0%b0%d1%80%d0%b0%d0%bb%d0%b5%d0%bb%d1%8c%d0%bd%d0%b5-%d0%b2%d0%b8%d0%ba%d0%be%d0%bd%d0%b0%d0%bd%d0%bd%d1%8f-%d0%b0%d1%81%d0%b8%d0%bd%d1%85%d1%80%d0%be%d0%bd%d0%bd%d0%b8%d1%85-%d1%84%d1%83%d0%bd%d0%ba%d1%86%d1%96%d0%b9-%d1%83-%d1%87%d0%be%d0%bc%d1%83-%d1%80%d1%96%d0%b7%d0%bd%d0%b8%d1%86%d1%8f-%d0%bc%d1%96%d0%b6-promiseall--%d1%96-promiseallsettled-">#</a>
+</h2>
+<h2 id="що-таке-дескриптори-властивостей-обєктів-розкажіть-про-їхнє-практичне-застосування">
+  Що таке дескриптори властивостей об’єктів? Розкажіть про їхнє практичне застосування.
+  <a class="anchor" href="#%d1%89%d0%be-%d1%82%d0%b0%d0%ba%d0%b5-%d0%b4%d0%b5%d1%81%d0%ba%d1%80%d0%b8%d0%bf%d1%82%d0%be%d1%80%d0%b8-%d0%b2%d0%bb%d0%b0%d1%81%d1%82%d0%b8%d0%b2%d0%be%d1%81%d1%82%d0%b5%d0%b9-%d0%be%d0%b1%d1%94%d0%ba%d1%82%d1%96%d0%b2-%d1%80%d0%be%d0%b7%d0%ba%d0%b0%d0%b6%d1%96%d1%82%d1%8c-%d0%bf%d1%80%d0%be-%d1%97%d1%85%d0%bd%d1%94-%d0%bf%d1%80%d0%b0%d0%ba%d1%82%d0%b8%d1%87%d0%bd%d0%b5-%d0%b7%d0%b0%d1%81%d1%82%d0%be%d1%81%d1%83%d0%b2%d0%b0%d0%bd%d0%bd%d1%8f">#</a>
+</h2>
+<h2 id="назвіть-кілька-способів-створення-незмінного-обєкта-в-javascript">
+  Назвіть кілька способів створення незмінного об’єкта в JavaScript.
+  <a class="anchor" href="#%d0%bd%d0%b0%d0%b7%d0%b2%d1%96%d1%82%d1%8c-%d0%ba%d1%96%d0%bb%d1%8c%d0%ba%d0%b0-%d1%81%d0%bf%d0%be%d1%81%d0%be%d0%b1%d1%96%d0%b2-%d1%81%d1%82%d0%b2%d0%be%d1%80%d0%b5%d0%bd%d0%bd%d1%8f-%d0%bd%d0%b5%d0%b7%d0%bc%d1%96%d0%bd%d0%bd%d0%be%d0%b3%d0%be-%d0%be%d0%b1%d1%94%d0%ba%d1%82%d0%b0-%d0%b2-javascript">#</a>
+</h2>
+<h2 id="як-створити-властивість-в-обєкта-яку-не-можна-буде-змінити">
+  Як створити властивість в об’єкта, яку не можна буде змінити?
+  <a class="anchor" href="#%d1%8f%d0%ba-%d1%81%d1%82%d0%b2%d0%be%d1%80%d0%b8%d1%82%d0%b8-%d0%b2%d0%bb%d0%b0%d1%81%d1%82%d0%b8%d0%b2%d1%96%d1%81%d1%82%d1%8c-%d0%b2-%d0%be%d0%b1%d1%94%d0%ba%d1%82%d0%b0-%d1%8f%d0%ba%d1%83-%d0%bd%d0%b5-%d0%bc%d0%be%d0%b6%d0%bd%d0%b0-%d0%b1%d1%83%d0%b4%d0%b5-%d0%b7%d0%bc%d1%96%d0%bd%d0%b8%d1%82%d0%b8">#</a>
+</h2>
+<h2 id="навіщо-потрібен-конструктор-proxy-наведіть-приклад-використання">
+  Навіщо потрібен конструктор Proxy? Наведіть приклад використання.
+  <a class="anchor" href="#%d0%bd%d0%b0%d0%b2%d1%96%d1%89%d0%be-%d0%bf%d0%be%d1%82%d1%80%d1%96%d0%b1%d0%b5%d0%bd-%d0%ba%d0%be%d0%bd%d1%81%d1%82%d1%80%d1%83%d0%ba%d1%82%d0%be%d1%80-proxy-%d0%bd%d0%b0%d0%b2%d0%b5%d0%b4%d1%96%d1%82%d1%8c-%d0%bf%d1%80%d0%b8%d0%ba%d0%bb%d0%b0%d0%b4-%d0%b2%d0%b8%d0%ba%d0%be%d1%80%d0%b8%d1%81%d1%82%d0%b0%d0%bd%d0%bd%d1%8f">#</a>
+</h2>
+<h2 id="що-таке-arraybuffer-у-чому-різниця-між-uint32array-і-float32array-який-результат-виконання-коду">
+  Що таке ArrayBuffer? У чому різниця між Uint32Array і Float32Array? Який результат виконання коду?
+  <a class="anchor" href="#%d1%89%d0%be-%d1%82%d0%b0%d0%ba%d0%b5-arraybuffer-%d1%83-%d1%87%d0%be%d0%bc%d1%83-%d1%80%d1%96%d0%b7%d0%bd%d0%b8%d1%86%d1%8f-%d0%bc%d1%96%d0%b6-uint32array-%d1%96-float32array-%d1%8f%d0%ba%d0%b8%d0%b9-%d1%80%d0%b5%d0%b7%d1%83%d0%bb%d1%8c%d1%82%d0%b0%d1%82-%d0%b2%d0%b8%d0%ba%d0%be%d0%bd%d0%b0%d0%bd%d0%bd%d1%8f-%d0%ba%d0%be%d0%b4%d1%83">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">uint32Array</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Uint32Array</span>();
+</span></span><span style="display:flex;"><span>Array.<span style="color:#a6e22e">isArray</span>(<span style="color:#a6e22e">uint32Array</span>);
+</span></span></code></pre></div><h2 id="яким-буде-результат-порівняння">
+  Яким буде результат порівняння?
+  <a class="anchor" href="#%d1%8f%d0%ba%d0%b8%d0%bc-%d0%b1%d1%83%d0%b4%d0%b5-%d1%80%d0%b5%d0%b7%d1%83%d0%bb%d1%8c%d1%82%d0%b0%d1%82-%d0%bf%d0%be%d1%80%d1%96%d0%b2%d0%bd%d1%8f%d0%bd%d0%bd%d1%8f">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">“</span><span style="color:#a6e22e">HTTPs</span><span style="color:#f92672">:</span><span style="color:#75715e">//xyz.com/path&lt;to&gt;page.html”;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>encodeURI(<span style="color:#a6e22e">url</span>) <span style="color:#f92672">==</span> encodeURIComponent(<span style="color:#a6e22e">url</span>); 
+</span></span></code></pre></div><h2 id="розкажіть-про-генератори-та-ітератори">
+  Розкажіть про генератори та ітератори.
+  <a class="anchor" href="#%d1%80%d0%be%d0%b7%d0%ba%d0%b0%d0%b6%d1%96%d1%82%d1%8c-%d0%bf%d1%80%d0%be-%d0%b3%d0%b5%d0%bd%d0%b5%d1%80%d0%b0%d1%82%d0%be%d1%80%d0%b8-%d1%82%d0%b0-%d1%96%d1%82%d0%b5%d1%80%d0%b0%d1%82%d0%be%d1%80%d0%b8">#</a>
+</h2>
+<h2 id="поясніть-що-робить-наведений-код">
+  Поясніть, що робить наведений код:
+  <a class="anchor" href="#%d0%bf%d0%be%d1%8f%d1%81%d0%bd%d1%96%d1%82%d1%8c-%d1%89%d0%be-%d1%80%d0%be%d0%b1%d0%b8%d1%82%d1%8c-%d0%bd%d0%b0%d0%b2%d0%b5%d0%b4%d0%b5%d0%bd%d0%b8%d0%b9-%d0%ba%d0%be%d0%b4">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">fn</span>(<span style="color:#a6e22e">num</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">num</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">yield</span> <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">i</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">loop</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fn</span>(<span style="color:#ae81ff">5</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">loop</span>.<span style="color:#a6e22e">next</span>();
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">loop</span>.<span style="color:#a6e22e">next</span>();
+</span></span></code></pre></div><h2 id="розкажіть-про-тип-даних-symbol-і-його-практичне-застосування-як-перевести-число-з-10-розрядної-системи-в-1628-розрядну-систему-числення">
+  Розкажіть про тип даних Symbol і його практичне застосування. Як перевести число з 10-розрядної системи в 16(2,8)-розрядну систему числення?
+  <a class="anchor" href="#%d1%80%d0%be%d0%b7%d0%ba%d0%b0%d0%b6%d1%96%d1%82%d1%8c-%d0%bf%d1%80%d0%be-%d1%82%d0%b8%d0%bf-%d0%b4%d0%b0%d0%bd%d0%b8%d1%85-symbol-%d1%96-%d0%b9%d0%be%d0%b3%d0%be-%d0%bf%d1%80%d0%b0%d0%ba%d1%82%d0%b8%d1%87%d0%bd%d0%b5-%d0%b7%d0%b0%d1%81%d1%82%d0%be%d1%81%d1%83%d0%b2%d0%b0%d0%bd%d0%bd%d1%8f-%d1%8f%d0%ba-%d0%bf%d0%b5%d1%80%d0%b5%d0%b2%d0%b5%d1%81%d1%82%d0%b8-%d1%87%d0%b8%d1%81%d0%bb%d0%be-%d0%b7-10-%d1%80%d0%be%d0%b7%d1%80%d1%8f%d0%b4%d0%bd%d0%be%d1%97-%d1%81%d0%b8%d1%81%d1%82%d0%b5%d0%bc%d0%b8-%d0%b2-1628-%d1%80%d0%be%d0%b7%d1%80%d1%8f%d0%b4%d0%bd%d1%83-%d1%81%d0%b8%d1%81%d1%82%d0%b5%d0%bc%d1%83-%d1%87%d0%b8%d1%81%d0%bb%d0%b5%d0%bd%d0%bd%d1%8f">#</a>
+</h2>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#які-типи-даних-бувають-у-javascript-який-буде-результат-виконання-коду">Які типи даних бувають у JavaScript? Який буде результат виконання коду?</a></li>
+    <li><a href="#що-таке-temporal-dead-zone">Що таке temporal dead zone?</a></li>
+    <li><a href="#як-працює-boxing--unboxing-у-javascript">Як працює boxing / unboxing у JavaScript?</a></li>
+    <li><a href="#у-чому-різниця-між-оператором-in-і-методом-hasownproperty">У чому різниця між оператором in і методом hasOwnProperty?</a></li>
+    <li><a href="#опишіть-за-допомогою-чого-в-js-реалізуються-такі-ооп-парадигми-як-інкапсуляція-поліморфізм-абстракція">Опишіть, за допомогою чого в JS реалізуються такі ООП-парадигми, як інкапсуляція, поліморфізм, абстракція?</a></li>
+    <li><a href="#що-таке-прототип-як-працює-прототипне-наслідування-в-js-поясніть-роботу-коду">Що таке прототип? Як працює прототипне наслідування в JS? Поясніть роботу коду.</a></li>
+    <li><a href="#яка-різниця-між-композицією-та-наслідуванням">Яка різниця між композицією та наслідуванням?</a></li>
+    <li><a href="#чому-не-варто-використовувати-конструктори-типу-new-string">Чому не варто використовувати конструктори типу new String?</a></li>
+    <li><a href="#розкажіть-про-базовий-пристрій-і-механізм-роботи-event-loop">Розкажіть про базовий пристрій і механізм роботи Event loop.</a></li>
+    <li><a href="#що-таке-записи-records-і-кортежі-tuples-чим-вони-відрізняються-від-звичайних-обєктів">Що таке записи (records) і кортежі (tuples)? Чим вони відрізняються від звичайних об’єктів?</a></li>
+    <li><a href="#які-відмінності-в-поведінці-es5-функції-конструктора-та-es2015-класу">Які відмінності в поведінці ES5 функції-конструктора та ES2015 класу?</a></li>
+    <li><a href="#як-реалізувати-патерн-модуль">Як реалізувати патерн «Модуль»?</a></li>
+    <li><a href="#чому-typeof-null-повертає-object">Чому typeof null повертає object?</a></li>
+    <li><a href="#що-таке-приведення-перетворення-типів-у-js">Що таке приведення (перетворення) типів у JS?</a></li>
+    <li><a href="#що-таке-явне-і-неявне-приведення-перетворення-типів-даних-у-js-як-відбувається-перетворення-типів-у-таких-прикладах">Що таке явне і неявне приведення (перетворення) типів даних у JS? Як відбувається перетворення типів у таких прикладах:</a></li>
+    <li><a href="#що-таке-garbage-collector">Що таке Garbage Collector?</a></li>
+    <li><a href="#опишіть-основні-принципи-роботи-збирача-сміття-у-js-рушіях-engines">Опишіть основні принципи роботи «збирача сміття» у JS-рушіях (engines).</a></li>
+    <li><a href="#опишіть-призначення-і-принципи-роботи-з-колекціями-weakmap-і-weakset-чим-вони-відрізняються-від-колекцій-map-і-set-відповідно">Опишіть призначення і принципи роботи з колекціями WeakMap і WeakSet? Чим вони відрізняються від колекцій Map і Set відповідно?</a></li>
+    <li><a href="#чим-відрізняється-observable-від-promise">Чим відрізняється Observable від Promise?</a></li>
+    <li><a href="#що-таке-promise-назвіть-порядок-виконання-then-і-catch-у-ланцюжку">Що таке Promise? Назвіть порядок виконання then і catch у ланцюжку.</a></li>
+    <li><a href="#розкажіть-про-послідовне-і-паралельне-виконання-асинхронних-функцій-у-чому-різниця-між-promiseall--і-promiseallsettled-">Розкажіть про послідовне і паралельне виконання асинхронних функцій. У чому різниця між Promise.all () і Promise.allSettled ()?</a></li>
+    <li><a href="#що-таке-дескриптори-властивостей-обєктів-розкажіть-про-їхнє-практичне-застосування">Що таке дескриптори властивостей об’єктів? Розкажіть про їхнє практичне застосування.</a></li>
+    <li><a href="#назвіть-кілька-способів-створення-незмінного-обєкта-в-javascript">Назвіть кілька способів створення незмінного об’єкта в JavaScript.</a></li>
+    <li><a href="#як-створити-властивість-в-обєкта-яку-не-можна-буде-змінити">Як створити властивість в об’єкта, яку не можна буде змінити?</a></li>
+    <li><a href="#навіщо-потрібен-конструктор-proxy-наведіть-приклад-використання">Навіщо потрібен конструктор Proxy? Наведіть приклад використання.</a></li>
+    <li><a href="#що-таке-arraybuffer-у-чому-різниця-між-uint32array-і-float32array-який-результат-виконання-коду">Що таке ArrayBuffer? У чому різниця між Uint32Array і Float32Array? Який результат виконання коду?</a></li>
+    <li><a href="#яким-буде-результат-порівняння">Яким буде результат порівняння?</a></li>
+    <li><a href="#розкажіть-про-генератори-та-ітератори">Розкажіть про генератори та ітератори.</a></li>
+    <li><a href="#поясніть-що-робить-наведений-код">Поясніть, що робить наведений код:</a></li>
+    <li><a href="#розкажіть-про-тип-даних-symbol-і-його-практичне-застосування-як-перевести-число-з-10-розрядної-системи-в-1628-розрядну-систему-числення">Розкажіть про тип даних Symbol і його практичне застосування. Як перевести число з 10-розрядної системи в 16(2,8)-розрядну систему числення?</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

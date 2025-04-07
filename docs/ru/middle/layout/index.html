@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Верстка
+  #
+
+
+  Поясніть різницю між одиницями вимірювання px, em, rem.
+  #
+
+
+  Для чого потрібні CSS-змінні? Наведіть кілька прикладів використання.
+  #
+
+
+  Що станеться при додаванні наступного селектора?
+  #
+
+* { box-sizing: border-box; }
+
+  Як адаптувати сторінку для друку?
+  #
+
+
+  Опишіть особливості кастомізації стилів стандартних елементів форм.
+  #
+
+
+  Що таке progressive рендеринг? Які підходи використовуються?
+  #
+
+
+  Назвіть кілька способів реалізації lazy-loading медіаресурсів на сторінці.
+  #
+
+
+  Назвіть популярні шаблонізатори для фронтенд-розробки. Опишіть особливості їх використання.
+  #
+
+
+  Назвіть популярні CSS-методології та їхні відмінності.
+  #
+
+
+  Як працює CSS Grid?
+  #
+
+
+  Які формати зображень підтримують анімацію?
+  #
+
+
+  Як відстежити прогрес / закінчення CSS @keyframes анімацій або плавних переходів, реалізованих за допомогою transition, у JS?
+  #
+
+
+  Які CSS-властивості можуть бути оброблені безпосередньо через GPU? Що таке композитні шари й чому їх велика кількість може призвести до аварійного завершення роботи браузера на мобільних пристроях?
+  #
+
+
+  Як перевикористати інлайнові SVG-елементи на сторінці?
+  #
+
+
+  Опишіть способи оптимізації SVG-файлів.
+  #
+
+
+  Як реалізувати іконковий шрифт з певного набору SVG-файлів?
+  #
+
+
+  Що таке хибне жирне або хибне курсивне (Faux) накреслення шрифтів?
+  #
+
+
+  Що таке #shadow-root в інспекторі HTML-сторінки?
+  #
+
+
+  Навіщо потрібні Custom Elements?
+  #
+
+
+  Чому видалення зайвих символів пробілів / символів перенесення в HTML не відбивається на кінцевій продуктивності завантаження сторінки?
+  #
+
+
+  Що таке контекст відображення canvas? Які існують типи контексту для рендерингу двовимірної та тривимірної графіки?
+  #
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://toruse.github.io/javascript300/ru/middle/layout/">
+  <meta property="og:site_name" content="Собеседование: Вопросы по JavaScript">
+  <meta property="og:title" content="Верстка">
+  <meta property="og:description" content="Верстка#Поясніть різницю між одиницями вимірювання px, em, rem.#Для чого потрібні CSS-змінні? Наведіть кілька прикладів використання.#Що станеться при додаванні наступного селектора?#* { box-sizing: border-box; } Як адаптувати сторінку для друку?#Опишіть особливості кастомізації стилів стандартних елементів форм.#Що таке progressive рендеринг? Які підходи використовуються?#Назвіть кілька способів реалізації lazy-loading медіаресурсів на сторінці.#Назвіть популярні шаблонізатори для фронтенд-розробки. Опишіть особливості їх використання.#Назвіть популярні CSS-методології та їхні відмінності.#Як працює CSS Grid?#Які формати зображень підтримують анімацію?#Як відстежити прогрес / закінчення CSS @keyframes анімацій або плавних переходів, реалізованих за допомогою transition, у JS?#Які CSS-властивості можуть бути оброблені безпосередньо через GPU? Що таке композитні шари й чому їх велика кількість може призвести до аварійного завершення роботи браузера на мобільних пристроях?#Як перевикористати інлайнові SVG-елементи на сторінці?#Опишіть способи оптимізації SVG-файлів.#Як реалізувати іконковий шрифт з певного набору SVG-файлів?#Що таке хибне жирне або хибне курсивне (Faux) накреслення шрифтів?#Що таке #shadow-root в інспекторі HTML-сторінки?#Навіщо потрібні Custom Elements?#Чому видалення зайвих символів пробілів / символів перенесення в HTML не відбивається на кінцевій продуктивності завантаження сторінки?#Що таке контекст відображення canvas? Які існують типи контексту для рендерингу двовимірної та тривимірної графіки?#">
+  <meta property="og:locale" content="ru">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="middle">
+<title>Верстка | Собеседование: Вопросы по JavaScript</title>
+<link rel="icon" href="/javascript300/favicon.png" >
+<link rel="manifest" href="/javascript300/manifest.json">
+<link rel="canonical" href="https://toruse.github.io/javascript300/ru/middle/layout/">
+  <link rel="alternate" hreflang="ua" href="https://toruse.github.io/javascript300/middle/layout/" title="Верстка">
+  <link rel="alternate" hreflang="en" href="https://toruse.github.io/javascript300/en/middle/layout/" title="Верстка">
+<link rel="stylesheet" href="/javascript300/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-STM9NRDDSY"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-STM9NRDDSY');
+        }
+      </script><!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/javascript300/ru/"><span>Собеседование: Вопросы по JavaScript</span>
+  </a>
+</h2>
+
+
+
+
+  
+
+
+
+  
+    
+  
+    
+  
+
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/javascript300/svg/translate.svg" class="book-icon" alt="Languages" />
+        Русский
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/javascript300/middle/layout/">
+          Українська
+        </a>
+      </li>
+      
+      <li>
+        <a href="/javascript300/en/middle/layout/">
+          English
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8d849f25fb39295c59921b72ce642b53" class="toggle"  />
+    <label for="section-8d849f25fb39295c59921b72ce642b53" class="flex justify-between">
+      <a role="button" class="">Junior</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/junior/general/" class="">Общие</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/junior/jscore/" class="">JS Core</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/junior/functions/" class="">Функції</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/junior/frontend/" class="">Front-end</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/junior/layout/" class="">Верстка</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/junior/angular/" class="">Angular</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/junior/react/" class="">React</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/junior/backend/" class="">Back-end</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/junior/databases/" class="">Бази даних</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/junior/tools/" class="">Інструменти</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/junior/practice/" class="">Практичні завдання</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9931c15a8a7e225275d536ca34629837" class="toggle" checked />
+    <label for="section-9931c15a8a7e225275d536ca34629837" class="flex justify-between">
+      <a role="button" class="">Middle</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/middle/general/" class="">Загальні</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/middle/jscore/" class="">JS Core</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/middle/functions/" class="">Функції</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/middle/frontend/" class="">Front-end</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/middle/layout/" class="active">Верстка</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/middle/angular/" class="">Angular</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/middle/react/" class="">React</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/middle/backend/" class="">Back-end</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/middle/databases/" class="">Бази даних</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/middle/tools/" class="">Інструменти та інше</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/middle/practice/" class="">Практичні завдання</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b72d09b9d168b82b086a3b3427c5ef85" class="toggle"  />
+    <label for="section-b72d09b9d168b82b086a3b3427c5ef85" class="flex justify-between">
+      <a role="button" class="">Senior</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/senior/general/" class="">Загальні</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/senior/jscore/" class="">JS Core</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/senior/frontend/" class="">Front-end</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/senior/angular/" class="">Angular</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/senior/backend/" class="">Back-end</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/senior/databases/" class="">Бази даних</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/senior/tools/" class="">Інструменти</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/senior/practice/" class="">Практичні завдання</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/javascript300/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Верстка</h3>
+
+  <label for="toc-control">
+    
+    <img src="/javascript300/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#поясніть-різницю-між-одиницями-вимірювання-px-em-rem">Поясніть різницю між одиницями вимірювання px, em, rem.</a></li>
+    <li><a href="#для-чого-потрібні-css-змінні-наведіть-кілька-прикладів-використання">Для чого потрібні CSS-змінні? Наведіть кілька прикладів використання.</a></li>
+    <li><a href="#що-станеться-при-додаванні-наступного-селектора">Що станеться при додаванні наступного селектора?</a></li>
+    <li><a href="#як-адаптувати-сторінку-для-друку">Як адаптувати сторінку для друку?</a></li>
+    <li><a href="#опишіть-особливості-кастомізації-стилів-стандартних-елементів-форм">Опишіть особливості кастомізації стилів стандартних елементів форм.</a></li>
+    <li><a href="#що-таке-progressive-рендеринг-які-підходи-використовуються">Що таке progressive рендеринг? Які підходи використовуються?</a></li>
+    <li><a href="#назвіть-кілька-способів-реалізації-lazy-loading-медіаресурсів-на-сторінці">Назвіть кілька способів реалізації lazy-loading медіаресурсів на сторінці.</a></li>
+    <li><a href="#назвіть-популярні-шаблонізатори-для-фронтенд-розробки-опишіть-особливості-їх-використання">Назвіть популярні шаблонізатори для фронтенд-розробки. Опишіть особливості їх використання.</a></li>
+    <li><a href="#назвіть-популярні-css-методології-та-їхні-відмінності">Назвіть популярні CSS-методології та їхні відмінності.</a></li>
+    <li><a href="#як-працює-css-grid">Як працює CSS Grid?</a></li>
+    <li><a href="#які-формати-зображень-підтримують-анімацію">Які формати зображень підтримують анімацію?</a></li>
+    <li><a href="#як-відстежити-прогрес--закінчення-css-keyframes-анімацій-або-плавних-переходів-реалізованих-за-допомогою-transition-у-js">Як відстежити прогрес / закінчення CSS @keyframes анімацій або плавних переходів, реалізованих за допомогою transition, у JS?</a></li>
+    <li><a href="#які-css-властивості-можуть-бути-оброблені-безпосередньо-через-gpu-що-таке-композитні-шари-й-чому-їх-велика-кількість-може-призвести-до-аварійного-завершення-роботи-браузера-на-мобільних-пристроях">Які CSS-властивості можуть бути оброблені безпосередньо через GPU? Що таке композитні шари й чому їх велика кількість може призвести до аварійного завершення роботи браузера на мобільних пристроях?</a></li>
+    <li><a href="#як-перевикористати-інлайнові-svg-елементи-на-сторінці">Як перевикористати інлайнові SVG-елементи на сторінці?</a></li>
+    <li><a href="#опишіть-способи-оптимізації-svg-файлів">Опишіть способи оптимізації SVG-файлів.</a></li>
+    <li><a href="#як-реалізувати-іконковий-шрифт-з-певного-набору-svg-файлів">Як реалізувати іконковий шрифт з певного набору SVG-файлів?</a></li>
+    <li><a href="#що-таке-хибне-жирне-або-хибне-курсивне-faux-накреслення-шрифтів">Що таке хибне жирне або хибне курсивне (Faux) накреслення шрифтів?</a></li>
+    <li><a href="#що-таке-shadow-root-в-інспекторі-html-сторінки">Що таке #shadow-root в інспекторі HTML-сторінки?</a></li>
+    <li><a href="#навіщо-потрібні-custom-elements">Навіщо потрібні Custom Elements?</a></li>
+    <li><a href="#чому-видалення-зайвих-символів-пробілів--символів-перенесення-в-html-не-відбивається-на-кінцевій-продуктивності-завантаження-сторінки">Чому видалення зайвих символів пробілів / символів перенесення в HTML не відбивається на кінцевій продуктивності завантаження сторінки?</a></li>
+    <li><a href="#що-таке-контекст-відображення-canvas-які-існують-типи-контексту-для-рендерингу-двовимірної-та-тривимірної-графіки">Що таке контекст відображення canvas? Які існують типи контексту для рендерингу двовимірної та тривимірної графіки?</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="верстка">
+  Верстка
+  <a class="anchor" href="#%d0%b2%d0%b5%d1%80%d1%81%d1%82%d0%ba%d0%b0">#</a>
+</h1>
+<h2 id="поясніть-різницю-між-одиницями-вимірювання-px-em-rem">
+  Поясніть різницю між одиницями вимірювання px, em, rem.
+  <a class="anchor" href="#%d0%bf%d0%be%d1%8f%d1%81%d0%bd%d1%96%d1%82%d1%8c-%d1%80%d1%96%d0%b7%d0%bd%d0%b8%d1%86%d1%8e-%d0%bc%d1%96%d0%b6-%d0%be%d0%b4%d0%b8%d0%bd%d0%b8%d1%86%d1%8f%d0%bc%d0%b8-%d0%b2%d0%b8%d0%bc%d1%96%d1%80%d1%8e%d0%b2%d0%b0%d0%bd%d0%bd%d1%8f-px-em-rem">#</a>
+</h2>
+<h2 id="для-чого-потрібні-css-змінні-наведіть-кілька-прикладів-використання">
+  Для чого потрібні CSS-змінні? Наведіть кілька прикладів використання.
+  <a class="anchor" href="#%d0%b4%d0%bb%d1%8f-%d1%87%d0%be%d0%b3%d0%be-%d0%bf%d0%be%d1%82%d1%80%d1%96%d0%b1%d0%bd%d1%96-css-%d0%b7%d0%bc%d1%96%d0%bd%d0%bd%d1%96-%d0%bd%d0%b0%d0%b2%d0%b5%d0%b4%d1%96%d1%82%d1%8c-%d0%ba%d1%96%d0%bb%d1%8c%d0%ba%d0%b0-%d0%bf%d1%80%d0%b8%d0%ba%d0%bb%d0%b0%d0%b4%d1%96%d0%b2-%d0%b2%d0%b8%d0%ba%d0%be%d1%80%d0%b8%d1%81%d1%82%d0%b0%d0%bd%d0%bd%d1%8f">#</a>
+</h2>
+<h2 id="що-станеться-при-додаванні-наступного-селектора">
+  Що станеться при додаванні наступного селектора?
+  <a class="anchor" href="#%d1%89%d0%be-%d1%81%d1%82%d0%b0%d0%bd%d0%b5%d1%82%d1%8c%d1%81%d1%8f-%d0%bf%d1%80%d0%b8-%d0%b4%d0%be%d0%b4%d0%b0%d0%b2%d0%b0%d0%bd%d0%bd%d1%96-%d0%bd%d0%b0%d1%81%d1%82%d1%83%d0%bf%d0%bd%d0%be%d0%b3%d0%be-%d1%81%d0%b5%d0%bb%d0%b5%d0%ba%d1%82%d0%be%d1%80%d0%b0">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">*</span> { <span style="color:#66d9ef">box-sizing</span>: <span style="color:#66d9ef">border-box</span>; }
+</span></span></code></pre></div><h2 id="як-адаптувати-сторінку-для-друку">
+  Як адаптувати сторінку для друку?
+  <a class="anchor" href="#%d1%8f%d0%ba-%d0%b0%d0%b4%d0%b0%d0%bf%d1%82%d1%83%d0%b2%d0%b0%d1%82%d0%b8-%d1%81%d1%82%d0%be%d1%80%d1%96%d0%bd%d0%ba%d1%83-%d0%b4%d0%bb%d1%8f-%d0%b4%d1%80%d1%83%d0%ba%d1%83">#</a>
+</h2>
+<h2 id="опишіть-особливості-кастомізації-стилів-стандартних-елементів-форм">
+  Опишіть особливості кастомізації стилів стандартних елементів форм.
+  <a class="anchor" href="#%d0%be%d0%bf%d0%b8%d1%88%d1%96%d1%82%d1%8c-%d0%be%d1%81%d0%be%d0%b1%d0%bb%d0%b8%d0%b2%d0%be%d1%81%d1%82%d1%96-%d0%ba%d0%b0%d1%81%d1%82%d0%be%d0%bc%d1%96%d0%b7%d0%b0%d1%86%d1%96%d1%97-%d1%81%d1%82%d0%b8%d0%bb%d1%96%d0%b2-%d1%81%d1%82%d0%b0%d0%bd%d0%b4%d0%b0%d1%80%d1%82%d0%bd%d0%b8%d1%85-%d0%b5%d0%bb%d0%b5%d0%bc%d0%b5%d0%bd%d1%82%d1%96%d0%b2-%d1%84%d0%be%d1%80%d0%bc">#</a>
+</h2>
+<h2 id="що-таке-progressive-рендеринг-які-підходи-використовуються">
+  Що таке progressive рендеринг? Які підходи використовуються?
+  <a class="anchor" href="#%d1%89%d0%be-%d1%82%d0%b0%d0%ba%d0%b5-progressive-%d1%80%d0%b5%d0%bd%d0%b4%d0%b5%d1%80%d0%b8%d0%bd%d0%b3-%d1%8f%d0%ba%d1%96-%d0%bf%d1%96%d0%b4%d1%85%d0%be%d0%b4%d0%b8-%d0%b2%d0%b8%d0%ba%d0%be%d1%80%d0%b8%d1%81%d1%82%d0%be%d0%b2%d1%83%d1%8e%d1%82%d1%8c%d1%81%d1%8f">#</a>
+</h2>
+<h2 id="назвіть-кілька-способів-реалізації-lazy-loading-медіаресурсів-на-сторінці">
+  Назвіть кілька способів реалізації lazy-loading медіаресурсів на сторінці.
+  <a class="anchor" href="#%d0%bd%d0%b0%d0%b7%d0%b2%d1%96%d1%82%d1%8c-%d0%ba%d1%96%d0%bb%d1%8c%d0%ba%d0%b0-%d1%81%d0%bf%d0%be%d1%81%d0%be%d0%b1%d1%96%d0%b2-%d1%80%d0%b5%d0%b0%d0%bb%d1%96%d0%b7%d0%b0%d1%86%d1%96%d1%97-lazy-loading-%d0%bc%d0%b5%d0%b4%d1%96%d0%b0%d1%80%d0%b5%d1%81%d1%83%d1%80%d1%81%d1%96%d0%b2-%d0%bd%d0%b0-%d1%81%d1%82%d0%be%d1%80%d1%96%d0%bd%d1%86%d1%96">#</a>
+</h2>
+<h2 id="назвіть-популярні-шаблонізатори-для-фронтенд-розробки-опишіть-особливості-їх-використання">
+  Назвіть популярні шаблонізатори для фронтенд-розробки. Опишіть особливості їх використання.
+  <a class="anchor" href="#%d0%bd%d0%b0%d0%b7%d0%b2%d1%96%d1%82%d1%8c-%d0%bf%d0%be%d0%bf%d1%83%d0%bb%d1%8f%d1%80%d0%bd%d1%96-%d1%88%d0%b0%d0%b1%d0%bb%d0%be%d0%bd%d1%96%d0%b7%d0%b0%d1%82%d0%be%d1%80%d0%b8-%d0%b4%d0%bb%d1%8f-%d1%84%d1%80%d0%be%d0%bd%d1%82%d0%b5%d0%bd%d0%b4-%d1%80%d0%be%d0%b7%d1%80%d0%be%d0%b1%d0%ba%d0%b8-%d0%be%d0%bf%d0%b8%d1%88%d1%96%d1%82%d1%8c-%d0%be%d1%81%d0%be%d0%b1%d0%bb%d0%b8%d0%b2%d0%be%d1%81%d1%82%d1%96-%d1%97%d1%85-%d0%b2%d0%b8%d0%ba%d0%be%d1%80%d0%b8%d1%81%d1%82%d0%b0%d0%bd%d0%bd%d1%8f">#</a>
+</h2>
+<h2 id="назвіть-популярні-css-методології-та-їхні-відмінності">
+  Назвіть популярні CSS-методології та їхні відмінності.
+  <a class="anchor" href="#%d0%bd%d0%b0%d0%b7%d0%b2%d1%96%d1%82%d1%8c-%d0%bf%d0%be%d0%bf%d1%83%d0%bb%d1%8f%d1%80%d0%bd%d1%96-css-%d0%bc%d0%b5%d1%82%d0%be%d0%b4%d0%be%d0%bb%d0%be%d0%b3%d1%96%d1%97-%d1%82%d0%b0-%d1%97%d1%85%d0%bd%d1%96-%d0%b2%d1%96%d0%b4%d0%bc%d1%96%d0%bd%d0%bd%d0%be%d1%81%d1%82%d1%96">#</a>
+</h2>
+<h2 id="як-працює-css-grid">
+  Як працює CSS Grid?
+  <a class="anchor" href="#%d1%8f%d0%ba-%d0%bf%d1%80%d0%b0%d1%86%d1%8e%d1%94-css-grid">#</a>
+</h2>
+<h2 id="які-формати-зображень-підтримують-анімацію">
+  Які формати зображень підтримують анімацію?
+  <a class="anchor" href="#%d1%8f%d0%ba%d1%96-%d1%84%d0%be%d1%80%d0%bc%d0%b0%d1%82%d0%b8-%d0%b7%d0%be%d0%b1%d1%80%d0%b0%d0%b6%d0%b5%d0%bd%d1%8c-%d0%bf%d1%96%d0%b4%d1%82%d1%80%d0%b8%d0%bc%d1%83%d1%8e%d1%82%d1%8c-%d0%b0%d0%bd%d1%96%d0%bc%d0%b0%d1%86%d1%96%d1%8e">#</a>
+</h2>
+<h2 id="як-відстежити-прогрес--закінчення-css-keyframes-анімацій-або-плавних-переходів-реалізованих-за-допомогою-transition-у-js">
+  Як відстежити прогрес / закінчення CSS @keyframes анімацій або плавних переходів, реалізованих за допомогою transition, у JS?
+  <a class="anchor" href="#%d1%8f%d0%ba-%d0%b2%d1%96%d0%b4%d1%81%d1%82%d0%b5%d0%b6%d0%b8%d1%82%d0%b8-%d0%bf%d1%80%d0%be%d0%b3%d1%80%d0%b5%d1%81--%d0%b7%d0%b0%d0%ba%d1%96%d0%bd%d1%87%d0%b5%d0%bd%d0%bd%d1%8f-css-keyframes-%d0%b0%d0%bd%d1%96%d0%bc%d0%b0%d1%86%d1%96%d0%b9-%d0%b0%d0%b1%d0%be-%d0%bf%d0%bb%d0%b0%d0%b2%d0%bd%d0%b8%d1%85-%d0%bf%d0%b5%d1%80%d0%b5%d1%85%d0%be%d0%b4%d1%96%d0%b2-%d1%80%d0%b5%d0%b0%d0%bb%d1%96%d0%b7%d0%be%d0%b2%d0%b0%d0%bd%d0%b8%d1%85-%d0%b7%d0%b0-%d0%b4%d0%be%d0%bf%d0%be%d0%bc%d0%be%d0%b3%d0%be%d1%8e-transition-%d1%83-js">#</a>
+</h2>
+<h2 id="які-css-властивості-можуть-бути-оброблені-безпосередньо-через-gpu-що-таке-композитні-шари-й-чому-їх-велика-кількість-може-призвести-до-аварійного-завершення-роботи-браузера-на-мобільних-пристроях">
+  Які CSS-властивості можуть бути оброблені безпосередньо через GPU? Що таке композитні шари й чому їх велика кількість може призвести до аварійного завершення роботи браузера на мобільних пристроях?
+  <a class="anchor" href="#%d1%8f%d0%ba%d1%96-css-%d0%b2%d0%bb%d0%b0%d1%81%d1%82%d0%b8%d0%b2%d0%be%d1%81%d1%82%d1%96-%d0%bc%d0%be%d0%b6%d1%83%d1%82%d1%8c-%d0%b1%d1%83%d1%82%d0%b8-%d0%be%d0%b1%d1%80%d0%be%d0%b1%d0%bb%d0%b5%d0%bd%d1%96-%d0%b1%d0%b5%d0%b7%d0%bf%d0%be%d1%81%d0%b5%d1%80%d0%b5%d0%b4%d0%bd%d1%8c%d0%be-%d1%87%d0%b5%d1%80%d0%b5%d0%b7-gpu-%d1%89%d0%be-%d1%82%d0%b0%d0%ba%d0%b5-%d0%ba%d0%be%d0%bc%d0%bf%d0%be%d0%b7%d0%b8%d1%82%d0%bd%d1%96-%d1%88%d0%b0%d1%80%d0%b8-%d0%b9-%d1%87%d0%be%d0%bc%d1%83-%d1%97%d1%85-%d0%b2%d0%b5%d0%bb%d0%b8%d0%ba%d0%b0-%d0%ba%d1%96%d0%bb%d1%8c%d0%ba%d1%96%d1%81%d1%82%d1%8c-%d0%bc%d0%be%d0%b6%d0%b5-%d0%bf%d1%80%d0%b8%d0%b7%d0%b2%d0%b5%d1%81%d1%82%d0%b8-%d0%b4%d0%be-%d0%b0%d0%b2%d0%b0%d1%80%d1%96%d0%b9%d0%bd%d0%be%d0%b3%d0%be-%d0%b7%d0%b0%d0%b2%d0%b5%d1%80%d1%88%d0%b5%d0%bd%d0%bd%d1%8f-%d1%80%d0%be%d0%b1%d0%be%d1%82%d0%b8-%d0%b1%d1%80%d0%b0%d1%83%d0%b7%d0%b5%d1%80%d0%b0-%d0%bd%d0%b0-%d0%bc%d0%be%d0%b1%d1%96%d0%bb%d1%8c%d0%bd%d0%b8%d1%85-%d0%bf%d1%80%d0%b8%d1%81%d1%82%d1%80%d0%be%d1%8f%d1%85">#</a>
+</h2>
+<h2 id="як-перевикористати-інлайнові-svg-елементи-на-сторінці">
+  Як перевикористати інлайнові SVG-елементи на сторінці?
+  <a class="anchor" href="#%d1%8f%d0%ba-%d0%bf%d0%b5%d1%80%d0%b5%d0%b2%d0%b8%d0%ba%d0%be%d1%80%d0%b8%d1%81%d1%82%d0%b0%d1%82%d0%b8-%d1%96%d0%bd%d0%bb%d0%b0%d0%b9%d0%bd%d0%be%d0%b2%d1%96-svg-%d0%b5%d0%bb%d0%b5%d0%bc%d0%b5%d0%bd%d1%82%d0%b8-%d0%bd%d0%b0-%d1%81%d1%82%d0%be%d1%80%d1%96%d0%bd%d1%86%d1%96">#</a>
+</h2>
+<h2 id="опишіть-способи-оптимізації-svg-файлів">
+  Опишіть способи оптимізації SVG-файлів.
+  <a class="anchor" href="#%d0%be%d0%bf%d0%b8%d1%88%d1%96%d1%82%d1%8c-%d1%81%d0%bf%d0%be%d1%81%d0%be%d0%b1%d0%b8-%d0%be%d0%bf%d1%82%d0%b8%d0%bc%d1%96%d0%b7%d0%b0%d1%86%d1%96%d1%97-svg-%d1%84%d0%b0%d0%b9%d0%bb%d1%96%d0%b2">#</a>
+</h2>
+<h2 id="як-реалізувати-іконковий-шрифт-з-певного-набору-svg-файлів">
+  Як реалізувати іконковий шрифт з певного набору SVG-файлів?
+  <a class="anchor" href="#%d1%8f%d0%ba-%d1%80%d0%b5%d0%b0%d0%bb%d1%96%d0%b7%d1%83%d0%b2%d0%b0%d1%82%d0%b8-%d1%96%d0%ba%d0%be%d0%bd%d0%ba%d0%be%d0%b2%d0%b8%d0%b9-%d1%88%d1%80%d0%b8%d1%84%d1%82-%d0%b7-%d0%bf%d0%b5%d0%b2%d0%bd%d0%be%d0%b3%d0%be-%d0%bd%d0%b0%d0%b1%d0%be%d1%80%d1%83-svg-%d1%84%d0%b0%d0%b9%d0%bb%d1%96%d0%b2">#</a>
+</h2>
+<h2 id="що-таке-хибне-жирне-або-хибне-курсивне-faux-накреслення-шрифтів">
+  Що таке хибне жирне або хибне курсивне (Faux) накреслення шрифтів?
+  <a class="anchor" href="#%d1%89%d0%be-%d1%82%d0%b0%d0%ba%d0%b5-%d1%85%d0%b8%d0%b1%d0%bd%d0%b5-%d0%b6%d0%b8%d1%80%d0%bd%d0%b5-%d0%b0%d0%b1%d0%be-%d1%85%d0%b8%d0%b1%d0%bd%d0%b5-%d0%ba%d1%83%d1%80%d1%81%d0%b8%d0%b2%d0%bd%d0%b5-faux-%d0%bd%d0%b0%d0%ba%d1%80%d0%b5%d1%81%d0%bb%d0%b5%d0%bd%d0%bd%d1%8f-%d1%88%d1%80%d0%b8%d1%84%d1%82%d1%96%d0%b2">#</a>
+</h2>
+<h2 id="що-таке-shadow-root-в-інспекторі-html-сторінки">
+  Що таке #shadow-root в інспекторі HTML-сторінки?
+  <a class="anchor" href="#%d1%89%d0%be-%d1%82%d0%b0%d0%ba%d0%b5-shadow-root-%d0%b2-%d1%96%d0%bd%d1%81%d0%bf%d0%b5%d0%ba%d1%82%d0%be%d1%80%d1%96-html-%d1%81%d1%82%d0%be%d1%80%d1%96%d0%bd%d0%ba%d0%b8">#</a>
+</h2>
+<h2 id="навіщо-потрібні-custom-elements">
+  Навіщо потрібні Custom Elements?
+  <a class="anchor" href="#%d0%bd%d0%b0%d0%b2%d1%96%d1%89%d0%be-%d0%bf%d0%be%d1%82%d1%80%d1%96%d0%b1%d0%bd%d1%96-custom-elements">#</a>
+</h2>
+<h2 id="чому-видалення-зайвих-символів-пробілів--символів-перенесення-в-html-не-відбивається-на-кінцевій-продуктивності-завантаження-сторінки">
+  Чому видалення зайвих символів пробілів / символів перенесення в HTML не відбивається на кінцевій продуктивності завантаження сторінки?
+  <a class="anchor" href="#%d1%87%d0%be%d0%bc%d1%83-%d0%b2%d0%b8%d0%b4%d0%b0%d0%bb%d0%b5%d0%bd%d0%bd%d1%8f-%d0%b7%d0%b0%d0%b9%d0%b2%d0%b8%d1%85-%d1%81%d0%b8%d0%bc%d0%b2%d0%be%d0%bb%d1%96%d0%b2-%d0%bf%d1%80%d0%be%d0%b1%d1%96%d0%bb%d1%96%d0%b2--%d1%81%d0%b8%d0%bc%d0%b2%d0%be%d0%bb%d1%96%d0%b2-%d0%bf%d0%b5%d1%80%d0%b5%d0%bd%d0%b5%d1%81%d0%b5%d0%bd%d0%bd%d1%8f-%d0%b2-html-%d0%bd%d0%b5-%d0%b2%d1%96%d0%b4%d0%b1%d0%b8%d0%b2%d0%b0%d1%94%d1%82%d1%8c%d1%81%d1%8f-%d0%bd%d0%b0-%d0%ba%d1%96%d0%bd%d1%86%d0%b5%d0%b2%d1%96%d0%b9-%d0%bf%d1%80%d0%be%d0%b4%d1%83%d0%ba%d1%82%d0%b8%d0%b2%d0%bd%d0%be%d1%81%d1%82%d1%96-%d0%b7%d0%b0%d0%b2%d0%b0%d0%bd%d1%82%d0%b0%d0%b6%d0%b5%d0%bd%d0%bd%d1%8f-%d1%81%d1%82%d0%be%d1%80%d1%96%d0%bd%d0%ba%d0%b8">#</a>
+</h2>
+<h2 id="що-таке-контекст-відображення-canvas-які-існують-типи-контексту-для-рендерингу-двовимірної-та-тривимірної-графіки">
+  Що таке контекст відображення canvas? Які існують типи контексту для рендерингу двовимірної та тривимірної графіки?
+  <a class="anchor" href="#%d1%89%d0%be-%d1%82%d0%b0%d0%ba%d0%b5-%d0%ba%d0%be%d0%bd%d1%82%d0%b5%d0%ba%d1%81%d1%82-%d0%b2%d1%96%d0%b4%d0%be%d0%b1%d1%80%d0%b0%d0%b6%d0%b5%d0%bd%d0%bd%d1%8f-canvas-%d1%8f%d0%ba%d1%96-%d1%96%d1%81%d0%bd%d1%83%d1%8e%d1%82%d1%8c-%d1%82%d0%b8%d0%bf%d0%b8-%d0%ba%d0%be%d0%bd%d1%82%d0%b5%d0%ba%d1%81%d1%82%d1%83-%d0%b4%d0%bb%d1%8f-%d1%80%d0%b5%d0%bd%d0%b4%d0%b5%d1%80%d0%b8%d0%bd%d0%b3%d1%83-%d0%b4%d0%b2%d0%be%d0%b2%d0%b8%d0%bc%d1%96%d1%80%d0%bd%d0%be%d1%97-%d1%82%d0%b0-%d1%82%d1%80%d0%b8%d0%b2%d0%b8%d0%bc%d1%96%d1%80%d0%bd%d0%be%d1%97-%d0%b3%d1%80%d0%b0%d1%84%d1%96%d0%ba%d0%b8">#</a>
+</h2>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#поясніть-різницю-між-одиницями-вимірювання-px-em-rem">Поясніть різницю між одиницями вимірювання px, em, rem.</a></li>
+    <li><a href="#для-чого-потрібні-css-змінні-наведіть-кілька-прикладів-використання">Для чого потрібні CSS-змінні? Наведіть кілька прикладів використання.</a></li>
+    <li><a href="#що-станеться-при-додаванні-наступного-селектора">Що станеться при додаванні наступного селектора?</a></li>
+    <li><a href="#як-адаптувати-сторінку-для-друку">Як адаптувати сторінку для друку?</a></li>
+    <li><a href="#опишіть-особливості-кастомізації-стилів-стандартних-елементів-форм">Опишіть особливості кастомізації стилів стандартних елементів форм.</a></li>
+    <li><a href="#що-таке-progressive-рендеринг-які-підходи-використовуються">Що таке progressive рендеринг? Які підходи використовуються?</a></li>
+    <li><a href="#назвіть-кілька-способів-реалізації-lazy-loading-медіаресурсів-на-сторінці">Назвіть кілька способів реалізації lazy-loading медіаресурсів на сторінці.</a></li>
+    <li><a href="#назвіть-популярні-шаблонізатори-для-фронтенд-розробки-опишіть-особливості-їх-використання">Назвіть популярні шаблонізатори для фронтенд-розробки. Опишіть особливості їх використання.</a></li>
+    <li><a href="#назвіть-популярні-css-методології-та-їхні-відмінності">Назвіть популярні CSS-методології та їхні відмінності.</a></li>
+    <li><a href="#як-працює-css-grid">Як працює CSS Grid?</a></li>
+    <li><a href="#які-формати-зображень-підтримують-анімацію">Які формати зображень підтримують анімацію?</a></li>
+    <li><a href="#як-відстежити-прогрес--закінчення-css-keyframes-анімацій-або-плавних-переходів-реалізованих-за-допомогою-transition-у-js">Як відстежити прогрес / закінчення CSS @keyframes анімацій або плавних переходів, реалізованих за допомогою transition, у JS?</a></li>
+    <li><a href="#які-css-властивості-можуть-бути-оброблені-безпосередньо-через-gpu-що-таке-композитні-шари-й-чому-їх-велика-кількість-може-призвести-до-аварійного-завершення-роботи-браузера-на-мобільних-пристроях">Які CSS-властивості можуть бути оброблені безпосередньо через GPU? Що таке композитні шари й чому їх велика кількість може призвести до аварійного завершення роботи браузера на мобільних пристроях?</a></li>
+    <li><a href="#як-перевикористати-інлайнові-svg-елементи-на-сторінці">Як перевикористати інлайнові SVG-елементи на сторінці?</a></li>
+    <li><a href="#опишіть-способи-оптимізації-svg-файлів">Опишіть способи оптимізації SVG-файлів.</a></li>
+    <li><a href="#як-реалізувати-іконковий-шрифт-з-певного-набору-svg-файлів">Як реалізувати іконковий шрифт з певного набору SVG-файлів?</a></li>
+    <li><a href="#що-таке-хибне-жирне-або-хибне-курсивне-faux-накреслення-шрифтів">Що таке хибне жирне або хибне курсивне (Faux) накреслення шрифтів?</a></li>
+    <li><a href="#що-таке-shadow-root-в-інспекторі-html-сторінки">Що таке #shadow-root в інспекторі HTML-сторінки?</a></li>
+    <li><a href="#навіщо-потрібні-custom-elements">Навіщо потрібні Custom Elements?</a></li>
+    <li><a href="#чому-видалення-зайвих-символів-пробілів--символів-перенесення-в-html-не-відбивається-на-кінцевій-продуктивності-завантаження-сторінки">Чому видалення зайвих символів пробілів / символів перенесення в HTML не відбивається на кінцевій продуктивності завантаження сторінки?</a></li>
+    <li><a href="#що-таке-контекст-відображення-canvas-які-існують-типи-контексту-для-рендерингу-двовимірної-та-тривимірної-графіки">Що таке контекст відображення canvas? Які існують типи контексту для рендерингу двовимірної та тривимірної графіки?</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

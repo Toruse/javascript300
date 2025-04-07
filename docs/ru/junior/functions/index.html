@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Функції
+  #
+
+
+  Яка різниця між декларацією функції (function declaration) та функціональним виразом (function expression)?
+  #
+
+
+  Що таке анонімна функція?
+  #
+
+
+  Розкажіть про стрілкові функції (arrow function). В чому полягають відмінності стрілкових функцій від звичайних?
+  #
+
+
+  Що таке і для чого використовують IIFE (Immediately Invoked Function Expression)?
+  #
+
+
+  Що таке hoisting, як він працює для змінних і функцій?
+  #
+
+
+  Що таке замикання (closure) і які сценарії його використання?
+  #
+
+
+  Як ви розумієте замикання? Що буде виведено в консолі в цьому випадку?
+  #
+
+var f = function() {
+  console.log(1);
+}
+
+var execute = function(f) {
+  setTimeout(f, 1000);
+}
+
+execute(f); // что выведет в консоль и почему
+
+f = function() {
+  console.log(2);
+}
+
+  Що таке рекурсія?
+  #
+
+
+  Що означає ключове слово this?
+  #
+
+
+  Що таке втрата контексту, коли відбувається і як їй запобігти?
+  #
+
+
+  Методи функцій bind / call / apply — навіщо і в чому різниця?
+  #
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://toruse.github.io/javascript300/ru/junior/functions/">
+  <meta property="og:site_name" content="Собеседование: Вопросы по JavaScript">
+  <meta property="og:title" content="Функції">
+  <meta property="og:description" content="Функції#Яка різниця між декларацією функції (function declaration) та функціональним виразом (function expression)?#Що таке анонімна функція?#Розкажіть про стрілкові функції (arrow function). В чому полягають відмінності стрілкових функцій від звичайних?#Що таке і для чого використовують IIFE (Immediately Invoked Function Expression)?#Що таке hoisting, як він працює для змінних і функцій?#Що таке замикання (closure) і які сценарії його використання?#Як ви розумієте замикання? Що буде виведено в консолі в цьому випадку?#var f = function() { console.log(1); } var execute = function(f) { setTimeout(f, 1000); } execute(f); // что выведет в консоль и почему f = function() { console.log(2); } Що таке рекурсія?#Що означає ключове слово this?#Що таке втрата контексту, коли відбувається і як їй запобігти?#Методи функцій bind / call / apply — навіщо і в чому різниця?#">
+  <meta property="og:locale" content="ru">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="junior">
+<title>Функції | Собеседование: Вопросы по JavaScript</title>
+<link rel="icon" href="/javascript300/favicon.png" >
+<link rel="manifest" href="/javascript300/manifest.json">
+<link rel="canonical" href="https://toruse.github.io/javascript300/ru/junior/functions/">
+  <link rel="alternate" hreflang="ua" href="https://toruse.github.io/javascript300/junior/functions/" title="Функції">
+  <link rel="alternate" hreflang="en" href="https://toruse.github.io/javascript300/en/junior/functions/" title="Функції">
+<link rel="stylesheet" href="/javascript300/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-STM9NRDDSY"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-STM9NRDDSY');
+        }
+      </script><!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/javascript300/ru/"><span>Собеседование: Вопросы по JavaScript</span>
+  </a>
+</h2>
+
+
+
+
+  
+
+
+
+  
+    
+  
+    
+  
+
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/javascript300/svg/translate.svg" class="book-icon" alt="Languages" />
+        Русский
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/javascript300/junior/functions/">
+          Українська
+        </a>
+      </li>
+      
+      <li>
+        <a href="/javascript300/en/junior/functions/">
+          English
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8d849f25fb39295c59921b72ce642b53" class="toggle" checked />
+    <label for="section-8d849f25fb39295c59921b72ce642b53" class="flex justify-between">
+      <a role="button" class="">Junior</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/junior/general/" class="">Общие</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/junior/jscore/" class="">JS Core</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/junior/functions/" class="active">Функції</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/junior/frontend/" class="">Front-end</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/junior/layout/" class="">Верстка</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/junior/angular/" class="">Angular</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/junior/react/" class="">React</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/junior/backend/" class="">Back-end</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/junior/databases/" class="">Бази даних</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/junior/tools/" class="">Інструменти</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/junior/practice/" class="">Практичні завдання</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9931c15a8a7e225275d536ca34629837" class="toggle"  />
+    <label for="section-9931c15a8a7e225275d536ca34629837" class="flex justify-between">
+      <a role="button" class="">Middle</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/middle/general/" class="">Загальні</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/middle/jscore/" class="">JS Core</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/middle/functions/" class="">Функції</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/middle/frontend/" class="">Front-end</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/middle/layout/" class="">Верстка</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/middle/angular/" class="">Angular</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/middle/react/" class="">React</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/middle/backend/" class="">Back-end</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/middle/databases/" class="">Бази даних</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/middle/tools/" class="">Інструменти та інше</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/middle/practice/" class="">Практичні завдання</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b72d09b9d168b82b086a3b3427c5ef85" class="toggle"  />
+    <label for="section-b72d09b9d168b82b086a3b3427c5ef85" class="flex justify-between">
+      <a role="button" class="">Senior</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/senior/general/" class="">Загальні</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/senior/jscore/" class="">JS Core</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/senior/frontend/" class="">Front-end</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/senior/angular/" class="">Angular</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/senior/backend/" class="">Back-end</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/senior/databases/" class="">Бази даних</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/senior/tools/" class="">Інструменти</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/senior/practice/" class="">Практичні завдання</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/javascript300/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Функції</h3>
+
+  <label for="toc-control">
+    
+    <img src="/javascript300/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#яка-різниця-між-декларацією-функції-function-declaration-та-функціональним-виразом-function-expression">Яка різниця між декларацією функції (function declaration) та функціональним виразом (function expression)?</a></li>
+    <li><a href="#що-таке-анонімна-функція">Що таке анонімна функція?</a></li>
+    <li><a href="#розкажіть-про-стрілкові-функції-arrow-function-в-чому-полягають-відмінності-стрілкових-функцій-від-звичайних">Розкажіть про стрілкові функції (arrow function). В чому полягають відмінності стрілкових функцій від звичайних?</a></li>
+    <li><a href="#що-таке-і-для-чого-використовують-iife-immediately-invoked-function-expression">Що таке і для чого використовують IIFE (Immediately Invoked Function Expression)?</a></li>
+    <li><a href="#що-таке-hoisting-як-він-працює-для-змінних-і-функцій">Що таке hoisting, як він працює для змінних і функцій?</a></li>
+    <li><a href="#що-таке-замикання-closure-і-які-сценарії-його-використання">Що таке замикання (closure) і які сценарії його використання?</a></li>
+    <li><a href="#як-ви-розумієте-замикання-що-буде-виведено-в-консолі-в-цьому-випадку">Як ви розумієте замикання? Що буде виведено в консолі в цьому випадку?</a></li>
+    <li><a href="#що-таке-рекурсія">Що таке рекурсія?</a></li>
+    <li><a href="#що-означає-ключове-слово-this">Що означає ключове слово this?</a></li>
+    <li><a href="#що-таке-втрата-контексту-коли-відбувається-і-як-їй-запобігти">Що таке втрата контексту, коли відбувається і як їй запобігти?</a></li>
+    <li><a href="#методи-функцій-bind--call--apply--навіщо-і-в-чому-різниця">Методи функцій bind / call / apply — навіщо і в чому різниця?</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="функції">
+  Функції
+  <a class="anchor" href="#%d1%84%d1%83%d0%bd%d0%ba%d1%86%d1%96%d1%97">#</a>
+</h1>
+<h2 id="яка-різниця-між-декларацією-функції-function-declaration-та-функціональним-виразом-function-expression">
+  Яка різниця між декларацією функції (function declaration) та функціональним виразом (function expression)?
+  <a class="anchor" href="#%d1%8f%d0%ba%d0%b0-%d1%80%d1%96%d0%b7%d0%bd%d0%b8%d1%86%d1%8f-%d0%bc%d1%96%d0%b6-%d0%b4%d0%b5%d0%ba%d0%bb%d0%b0%d1%80%d0%b0%d1%86%d1%96%d1%94%d1%8e-%d1%84%d1%83%d0%bd%d0%ba%d1%86%d1%96%d1%97-function-declaration-%d1%82%d0%b0-%d1%84%d1%83%d0%bd%d0%ba%d1%86%d1%96%d0%be%d0%bd%d0%b0%d0%bb%d1%8c%d0%bd%d0%b8%d0%bc-%d0%b2%d0%b8%d1%80%d0%b0%d0%b7%d0%be%d0%bc-function-expression">#</a>
+</h2>
+<h2 id="що-таке-анонімна-функція">
+  Що таке анонімна функція?
+  <a class="anchor" href="#%d1%89%d0%be-%d1%82%d0%b0%d0%ba%d0%b5-%d0%b0%d0%bd%d0%be%d0%bd%d1%96%d0%bc%d0%bd%d0%b0-%d1%84%d1%83%d0%bd%d0%ba%d1%86%d1%96%d1%8f">#</a>
+</h2>
+<h2 id="розкажіть-про-стрілкові-функції-arrow-function-в-чому-полягають-відмінності-стрілкових-функцій-від-звичайних">
+  Розкажіть про стрілкові функції (arrow function). В чому полягають відмінності стрілкових функцій від звичайних?
+  <a class="anchor" href="#%d1%80%d0%be%d0%b7%d0%ba%d0%b0%d0%b6%d1%96%d1%82%d1%8c-%d0%bf%d1%80%d0%be-%d1%81%d1%82%d1%80%d1%96%d0%bb%d0%ba%d0%be%d0%b2%d1%96-%d1%84%d1%83%d0%bd%d0%ba%d1%86%d1%96%d1%97-arrow-function-%d0%b2-%d1%87%d0%be%d0%bc%d1%83-%d0%bf%d0%be%d0%bb%d1%8f%d0%b3%d0%b0%d1%8e%d1%82%d1%8c-%d0%b2%d1%96%d0%b4%d0%bc%d1%96%d0%bd%d0%bd%d0%be%d1%81%d1%82%d1%96-%d1%81%d1%82%d1%80%d1%96%d0%bb%d0%ba%d0%be%d0%b2%d0%b8%d1%85-%d1%84%d1%83%d0%bd%d0%ba%d1%86%d1%96%d0%b9-%d0%b2%d1%96%d0%b4-%d0%b7%d0%b2%d0%b8%d1%87%d0%b0%d0%b9%d0%bd%d0%b8%d1%85">#</a>
+</h2>
+<h2 id="що-таке-і-для-чого-використовують-iife-immediately-invoked-function-expression">
+  Що таке і для чого використовують IIFE (Immediately Invoked Function Expression)?
+  <a class="anchor" href="#%d1%89%d0%be-%d1%82%d0%b0%d0%ba%d0%b5-%d1%96-%d0%b4%d0%bb%d1%8f-%d1%87%d0%be%d0%b3%d0%be-%d0%b2%d0%b8%d0%ba%d0%be%d1%80%d0%b8%d1%81%d1%82%d0%be%d0%b2%d1%83%d1%8e%d1%82%d1%8c-iife-immediately-invoked-function-expression">#</a>
+</h2>
+<h2 id="що-таке-hoisting-як-він-працює-для-змінних-і-функцій">
+  Що таке hoisting, як він працює для змінних і функцій?
+  <a class="anchor" href="#%d1%89%d0%be-%d1%82%d0%b0%d0%ba%d0%b5-hoisting-%d1%8f%d0%ba-%d0%b2%d1%96%d0%bd-%d0%bf%d1%80%d0%b0%d1%86%d1%8e%d1%94-%d0%b4%d0%bb%d1%8f-%d0%b7%d0%bc%d1%96%d0%bd%d0%bd%d0%b8%d1%85-%d1%96-%d1%84%d1%83%d0%bd%d0%ba%d1%86%d1%96%d0%b9">#</a>
+</h2>
+<h2 id="що-таке-замикання-closure-і-які-сценарії-його-використання">
+  Що таке замикання (closure) і які сценарії його використання?
+  <a class="anchor" href="#%d1%89%d0%be-%d1%82%d0%b0%d0%ba%d0%b5-%d0%b7%d0%b0%d0%bc%d0%b8%d0%ba%d0%b0%d0%bd%d0%bd%d1%8f-closure-%d1%96-%d1%8f%d0%ba%d1%96-%d1%81%d1%86%d0%b5%d0%bd%d0%b0%d1%80%d1%96%d1%97-%d0%b9%d0%be%d0%b3%d0%be-%d0%b2%d0%b8%d0%ba%d0%be%d1%80%d0%b8%d1%81%d1%82%d0%b0%d0%bd%d0%bd%d1%8f">#</a>
+</h2>
+<h2 id="як-ви-розумієте-замикання-що-буде-виведено-в-консолі-в-цьому-випадку">
+  Як ви розумієте замикання? Що буде виведено в консолі в цьому випадку?
+  <a class="anchor" href="#%d1%8f%d0%ba-%d0%b2%d0%b8-%d1%80%d0%be%d0%b7%d1%83%d0%bc%d1%96%d1%94%d1%82%d0%b5-%d0%b7%d0%b0%d0%bc%d0%b8%d0%ba%d0%b0%d0%bd%d0%bd%d1%8f-%d1%89%d0%be-%d0%b1%d1%83%d0%b4%d0%b5-%d0%b2%d0%b8%d0%b2%d0%b5%d0%b4%d0%b5%d0%bd%d0%be-%d0%b2-%d0%ba%d0%be%d0%bd%d1%81%d0%be%d0%bb%d1%96-%d0%b2-%d1%86%d1%8c%d0%be%d0%bc%d1%83-%d0%b2%d0%b8%d0%bf%d0%b0%d0%b4%d0%ba%d1%83">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">f</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">execute</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">f</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">setTimeout</span>(<span style="color:#a6e22e">f</span>, <span style="color:#ae81ff">1000</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">execute</span>(<span style="color:#a6e22e">f</span>); <span style="color:#75715e">// что выведет в консоль и почему
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">f</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="що-таке-рекурсія">
+  Що таке рекурсія?
+  <a class="anchor" href="#%d1%89%d0%be-%d1%82%d0%b0%d0%ba%d0%b5-%d1%80%d0%b5%d0%ba%d1%83%d1%80%d1%81%d1%96%d1%8f">#</a>
+</h2>
+<h2 id="що-означає-ключове-слово-this">
+  Що означає ключове слово this?
+  <a class="anchor" href="#%d1%89%d0%be-%d0%be%d0%b7%d0%bd%d0%b0%d1%87%d0%b0%d1%94-%d0%ba%d0%bb%d1%8e%d1%87%d0%be%d0%b2%d0%b5-%d1%81%d0%bb%d0%be%d0%b2%d0%be-this">#</a>
+</h2>
+<h2 id="що-таке-втрата-контексту-коли-відбувається-і-як-їй-запобігти">
+  Що таке втрата контексту, коли відбувається і як їй запобігти?
+  <a class="anchor" href="#%d1%89%d0%be-%d1%82%d0%b0%d0%ba%d0%b5-%d0%b2%d1%82%d1%80%d0%b0%d1%82%d0%b0-%d0%ba%d0%be%d0%bd%d1%82%d0%b5%d0%ba%d1%81%d1%82%d1%83-%d0%ba%d0%be%d0%bb%d0%b8-%d0%b2%d1%96%d0%b4%d0%b1%d1%83%d0%b2%d0%b0%d1%94%d1%82%d1%8c%d1%81%d1%8f-%d1%96-%d1%8f%d0%ba-%d1%97%d0%b9-%d0%b7%d0%b0%d0%bf%d0%be%d0%b1%d1%96%d0%b3%d1%82%d0%b8">#</a>
+</h2>
+<h2 id="методи-функцій-bind--call--apply--навіщо-і-в-чому-різниця">
+  Методи функцій bind / call / apply — навіщо і в чому різниця?
+  <a class="anchor" href="#%d0%bc%d0%b5%d1%82%d0%be%d0%b4%d0%b8-%d1%84%d1%83%d0%bd%d0%ba%d1%86%d1%96%d0%b9-bind--call--apply--%d0%bd%d0%b0%d0%b2%d1%96%d1%89%d0%be-%d1%96-%d0%b2-%d1%87%d0%be%d0%bc%d1%83-%d1%80%d1%96%d0%b7%d0%bd%d0%b8%d1%86%d1%8f">#</a>
+</h2>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#яка-різниця-між-декларацією-функції-function-declaration-та-функціональним-виразом-function-expression">Яка різниця між декларацією функції (function declaration) та функціональним виразом (function expression)?</a></li>
+    <li><a href="#що-таке-анонімна-функція">Що таке анонімна функція?</a></li>
+    <li><a href="#розкажіть-про-стрілкові-функції-arrow-function-в-чому-полягають-відмінності-стрілкових-функцій-від-звичайних">Розкажіть про стрілкові функції (arrow function). В чому полягають відмінності стрілкових функцій від звичайних?</a></li>
+    <li><a href="#що-таке-і-для-чого-використовують-iife-immediately-invoked-function-expression">Що таке і для чого використовують IIFE (Immediately Invoked Function Expression)?</a></li>
+    <li><a href="#що-таке-hoisting-як-він-працює-для-змінних-і-функцій">Що таке hoisting, як він працює для змінних і функцій?</a></li>
+    <li><a href="#що-таке-замикання-closure-і-які-сценарії-його-використання">Що таке замикання (closure) і які сценарії його використання?</a></li>
+    <li><a href="#як-ви-розумієте-замикання-що-буде-виведено-в-консолі-в-цьому-випадку">Як ви розумієте замикання? Що буде виведено в консолі в цьому випадку?</a></li>
+    <li><a href="#що-таке-рекурсія">Що таке рекурсія?</a></li>
+    <li><a href="#що-означає-ключове-слово-this">Що означає ключове слово this?</a></li>
+    <li><a href="#що-таке-втрата-контексту-коли-відбувається-і-як-їй-запобігти">Що таке втрата контексту, коли відбувається і як їй запобігти?</a></li>
+    <li><a href="#методи-функцій-bind--call--apply--навіщо-і-в-чому-різниця">Методи функцій bind / call / apply — навіщо і в чому різниця?</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

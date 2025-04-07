@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  React
+  #
+
+
+  Чи працювали з класовими компонентами? У чому їхня особливість?
+  #
+
+
+  Які дані краще зберігати в стані компонента, а які передавати через пропси? Наведіть приклад.
+  #
+
+
+  Чи ознайомлені з хуками? У чому їхні переваги? Чи доводилося робити свої і з якою метою?
+  #
+
+
+  Чи ознайомлені з фрагментами та порталами? Навіщо вони потрібні?
+  #
+
+
+  Коли й для чого використовують рефи?
+  #
+
+
+  Які ви знаєте методи життєвого циклу компонента?
+  #
+
+
+  В якому методі життєвого циклу компонента краще робити запити на сервер? Чому?
+  #
+
+
+  В якому методі життєвого циклу компонента краще робити підписку і відписку від лістенера? Чому? Навіщо відписуватися?
+  #
+
+
+  Чи був досвід роботи з контекстом? Коли його варто використовувати?
+  #
+
+
+  У чому особливість PureComponent?
+  #
+
+
+  Чи працював з мемоізованими селекторами (memoized selectors)? Для чого їх використовують і який принцип роботи?
+  #
+
+
+  У чому бачите переваги бібліотеки React?
+  #
+
+
+  Чому бібліотека React швидка? Що таке Virtual DOM і Shadow DOM?
+  #
+
+
+  Навіщо в списках ключі? Чи можна робити ключами індекси елементів масиву? Коли це виправдано?
+  #
+
+
+  В чому основна ідея Redux?
+  #
+
+
+  Робота зі стилями в React.
+  #
+
+
+  React — це бібліотека чи фреймворк? Яка різниця між цими двома поняттями.
+  #
+
+
+  Чи можна використовувати jQuery разом з React? Чому так / ні?
+  #
+
+
+  Що таке codemod?
+  #
+
+
+  Чи доводилося налаштовувати проєкт React з нуля? За допомогою яких інструментів ви це робили?
+  #
+
+
+  Перерахуйте всі бібліотеки, які використовували у зв’язці з React.
+  #
+
+
+  Що найскладніше доводилося реалізовувати за допомогою React?
+  #
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://toruse.github.io/javascript300/ru/junior/react/">
+  <meta property="og:site_name" content="Собеседование: Вопросы по JavaScript">
+  <meta property="og:title" content="React">
+  <meta property="og:description" content="React#Чи працювали з класовими компонентами? У чому їхня особливість?#Які дані краще зберігати в стані компонента, а які передавати через пропси? Наведіть приклад.#Чи ознайомлені з хуками? У чому їхні переваги? Чи доводилося робити свої і з якою метою?#Чи ознайомлені з фрагментами та порталами? Навіщо вони потрібні?#Коли й для чого використовують рефи?#Які ви знаєте методи життєвого циклу компонента?#В якому методі життєвого циклу компонента краще робити запити на сервер? Чому?#В якому методі життєвого циклу компонента краще робити підписку і відписку від лістенера? Чому? Навіщо відписуватися?#Чи був досвід роботи з контекстом? Коли його варто використовувати?#У чому особливість PureComponent?#Чи працював з мемоізованими селекторами (memoized selectors)? Для чого їх використовують і який принцип роботи?#У чому бачите переваги бібліотеки React?#Чому бібліотека React швидка? Що таке Virtual DOM і Shadow DOM?#Навіщо в списках ключі? Чи можна робити ключами індекси елементів масиву? Коли це виправдано?#В чому основна ідея Redux?#Робота зі стилями в React.#React — це бібліотека чи фреймворк? Яка різниця між цими двома поняттями.#Чи можна використовувати jQuery разом з React? Чому так / ні?#Що таке codemod?#Чи доводилося налаштовувати проєкт React з нуля? За допомогою яких інструментів ви це робили?#Перерахуйте всі бібліотеки, які використовували у зв’язці з React.#Що найскладніше доводилося реалізовувати за допомогою React?#">
+  <meta property="og:locale" content="ru">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="junior">
+<title>React | Собеседование: Вопросы по JavaScript</title>
+<link rel="icon" href="/javascript300/favicon.png" >
+<link rel="manifest" href="/javascript300/manifest.json">
+<link rel="canonical" href="https://toruse.github.io/javascript300/ru/junior/react/">
+  <link rel="alternate" hreflang="ua" href="https://toruse.github.io/javascript300/junior/react/" title="React">
+  <link rel="alternate" hreflang="en" href="https://toruse.github.io/javascript300/en/junior/react/" title="React">
+<link rel="stylesheet" href="/javascript300/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-STM9NRDDSY"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-STM9NRDDSY');
+        }
+      </script><!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/javascript300/ru/"><span>Собеседование: Вопросы по JavaScript</span>
+  </a>
+</h2>
+
+
+
+
+  
+
+
+
+  
+    
+  
+    
+  
+
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/javascript300/svg/translate.svg" class="book-icon" alt="Languages" />
+        Русский
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/javascript300/junior/react/">
+          Українська
+        </a>
+      </li>
+      
+      <li>
+        <a href="/javascript300/en/junior/react/">
+          English
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8d849f25fb39295c59921b72ce642b53" class="toggle" checked />
+    <label for="section-8d849f25fb39295c59921b72ce642b53" class="flex justify-between">
+      <a role="button" class="">Junior</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/junior/general/" class="">Общие</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/junior/jscore/" class="">JS Core</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/junior/functions/" class="">Функції</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/junior/frontend/" class="">Front-end</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/junior/layout/" class="">Верстка</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/junior/angular/" class="">Angular</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/junior/react/" class="active">React</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/junior/backend/" class="">Back-end</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/junior/databases/" class="">Бази даних</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/junior/tools/" class="">Інструменти</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/junior/practice/" class="">Практичні завдання</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9931c15a8a7e225275d536ca34629837" class="toggle"  />
+    <label for="section-9931c15a8a7e225275d536ca34629837" class="flex justify-between">
+      <a role="button" class="">Middle</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/middle/general/" class="">Загальні</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/middle/jscore/" class="">JS Core</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/middle/functions/" class="">Функції</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/middle/frontend/" class="">Front-end</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/middle/layout/" class="">Верстка</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/middle/angular/" class="">Angular</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/middle/react/" class="">React</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/middle/backend/" class="">Back-end</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/middle/databases/" class="">Бази даних</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/middle/tools/" class="">Інструменти та інше</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/middle/practice/" class="">Практичні завдання</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b72d09b9d168b82b086a3b3427c5ef85" class="toggle"  />
+    <label for="section-b72d09b9d168b82b086a3b3427c5ef85" class="flex justify-between">
+      <a role="button" class="">Senior</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/senior/general/" class="">Загальні</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/senior/jscore/" class="">JS Core</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/senior/frontend/" class="">Front-end</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/senior/angular/" class="">Angular</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/senior/backend/" class="">Back-end</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/senior/databases/" class="">Бази даних</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/senior/tools/" class="">Інструменти</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/javascript300/ru/senior/practice/" class="">Практичні завдання</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/javascript300/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>React</h3>
+
+  <label for="toc-control">
+    
+    <img src="/javascript300/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#чи-працювали-з-класовими-компонентами-у-чому-їхня-особливість">Чи працювали з класовими компонентами? У чому їхня особливість?</a></li>
+    <li><a href="#які-дані-краще-зберігати-в-стані-компонента-а-які-передавати-через-пропси-наведіть-приклад">Які дані краще зберігати в стані компонента, а які передавати через пропси? Наведіть приклад.</a></li>
+    <li><a href="#чи-ознайомлені-з-хуками-у-чому-їхні-переваги-чи-доводилося-робити-свої-і-з-якою-метою">Чи ознайомлені з хуками? У чому їхні переваги? Чи доводилося робити свої і з якою метою?</a></li>
+    <li><a href="#чи-ознайомлені-з-фрагментами-та-порталами-навіщо-вони-потрібні">Чи ознайомлені з фрагментами та порталами? Навіщо вони потрібні?</a></li>
+    <li><a href="#коли-й-для-чого-використовують-рефи">Коли й для чого використовують рефи?</a></li>
+    <li><a href="#які-ви-знаєте-методи-життєвого-циклу-компонента">Які ви знаєте методи життєвого циклу компонента?</a></li>
+    <li><a href="#в-якому-методі-життєвого-циклу-компонента-краще-робити-запити-на-сервер-чому">В якому методі життєвого циклу компонента краще робити запити на сервер? Чому?</a></li>
+    <li><a href="#в-якому-методі-життєвого-циклу-компонента-краще-робити-підписку-і-відписку-від-лістенера-чому-навіщо-відписуватися">В якому методі життєвого циклу компонента краще робити підписку і відписку від лістенера? Чому? Навіщо відписуватися?</a></li>
+    <li><a href="#чи-був-досвід-роботи-з-контекстом-коли-його-варто-використовувати">Чи був досвід роботи з контекстом? Коли його варто використовувати?</a></li>
+    <li><a href="#у-чому-особливість-purecomponent">У чому особливість PureComponent?</a></li>
+    <li><a href="#чи-працював-з-мемоізованими-селекторами-memoized-selectors-для-чого-їх-використовують-і-який-принцип-роботи">Чи працював з мемоізованими селекторами (memoized selectors)? Для чого їх використовують і який принцип роботи?</a></li>
+    <li><a href="#у-чому-бачите-переваги-бібліотеки-react">У чому бачите переваги бібліотеки React?</a></li>
+    <li><a href="#чому-бібліотека-react-швидка-що-таке-virtual-dom-і-shadow-dom">Чому бібліотека React швидка? Що таке Virtual DOM і Shadow DOM?</a></li>
+    <li><a href="#навіщо-в-списках-ключі-чи-можна-робити-ключами-індекси-елементів-масиву-коли-це-виправдано">Навіщо в списках ключі? Чи можна робити ключами індекси елементів масиву? Коли це виправдано?</a></li>
+    <li><a href="#в-чому-основна-ідея-redux">В чому основна ідея Redux?</a></li>
+    <li><a href="#робота-зі-стилями-в-react">Робота зі стилями в React.</a></li>
+    <li><a href="#react--це-бібліотека-чи-фреймворк-яка-різниця-між-цими-двома-поняттями">React — це бібліотека чи фреймворк? Яка різниця між цими двома поняттями.</a></li>
+    <li><a href="#чи-можна-використовувати-jquery-разом-з-react-чому-так--ні">Чи можна використовувати jQuery разом з React? Чому так / ні?</a></li>
+    <li><a href="#що-таке-codemod">Що таке codemod?</a></li>
+    <li><a href="#чи-доводилося-налаштовувати-проєкт-react-з-нуля-за-допомогою-яких-інструментів-ви-це-робили">Чи доводилося налаштовувати проєкт React з нуля? За допомогою яких інструментів ви це робили?</a></li>
+    <li><a href="#перерахуйте-всі-бібліотеки-які-використовували-у-звязці-з-react">Перерахуйте всі бібліотеки, які використовували у зв’язці з React.</a></li>
+    <li><a href="#що-найскладніше-доводилося-реалізовувати-за-допомогою-react">Що найскладніше доводилося реалізовувати за допомогою React?</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="react">
+  React
+  <a class="anchor" href="#react">#</a>
+</h1>
+<h2 id="чи-працювали-з-класовими-компонентами-у-чому-їхня-особливість">
+  Чи працювали з класовими компонентами? У чому їхня особливість?
+  <a class="anchor" href="#%d1%87%d0%b8-%d0%bf%d1%80%d0%b0%d1%86%d1%8e%d0%b2%d0%b0%d0%bb%d0%b8-%d0%b7-%d0%ba%d0%bb%d0%b0%d1%81%d0%be%d0%b2%d0%b8%d0%bc%d0%b8-%d0%ba%d0%be%d0%bc%d0%bf%d0%be%d0%bd%d0%b5%d0%bd%d1%82%d0%b0%d0%bc%d0%b8-%d1%83-%d1%87%d0%be%d0%bc%d1%83-%d1%97%d1%85%d0%bd%d1%8f-%d0%be%d1%81%d0%be%d0%b1%d0%bb%d0%b8%d0%b2%d1%96%d1%81%d1%82%d1%8c">#</a>
+</h2>
+<h2 id="які-дані-краще-зберігати-в-стані-компонента-а-які-передавати-через-пропси-наведіть-приклад">
+  Які дані краще зберігати в стані компонента, а які передавати через пропси? Наведіть приклад.
+  <a class="anchor" href="#%d1%8f%d0%ba%d1%96-%d0%b4%d0%b0%d0%bd%d1%96-%d0%ba%d1%80%d0%b0%d1%89%d0%b5-%d0%b7%d0%b1%d0%b5%d1%80%d1%96%d0%b3%d0%b0%d1%82%d0%b8-%d0%b2-%d1%81%d1%82%d0%b0%d0%bd%d1%96-%d0%ba%d0%be%d0%bc%d0%bf%d0%be%d0%bd%d0%b5%d0%bd%d1%82%d0%b0-%d0%b0-%d1%8f%d0%ba%d1%96-%d0%bf%d0%b5%d1%80%d0%b5%d0%b4%d0%b0%d0%b2%d0%b0%d1%82%d0%b8-%d1%87%d0%b5%d1%80%d0%b5%d0%b7-%d0%bf%d1%80%d0%be%d0%bf%d1%81%d0%b8-%d0%bd%d0%b0%d0%b2%d0%b5%d0%b4%d1%96%d1%82%d1%8c-%d0%bf%d1%80%d0%b8%d0%ba%d0%bb%d0%b0%d0%b4">#</a>
+</h2>
+<h2 id="чи-ознайомлені-з-хуками-у-чому-їхні-переваги-чи-доводилося-робити-свої-і-з-якою-метою">
+  Чи ознайомлені з хуками? У чому їхні переваги? Чи доводилося робити свої і з якою метою?
+  <a class="anchor" href="#%d1%87%d0%b8-%d0%be%d0%b7%d0%bd%d0%b0%d0%b9%d0%be%d0%bc%d0%bb%d0%b5%d0%bd%d1%96-%d0%b7-%d1%85%d1%83%d0%ba%d0%b0%d0%bc%d0%b8-%d1%83-%d1%87%d0%be%d0%bc%d1%83-%d1%97%d1%85%d0%bd%d1%96-%d0%bf%d0%b5%d1%80%d0%b5%d0%b2%d0%b0%d0%b3%d0%b8-%d1%87%d0%b8-%d0%b4%d0%be%d0%b2%d0%be%d0%b4%d0%b8%d0%bb%d0%be%d1%81%d1%8f-%d1%80%d0%be%d0%b1%d0%b8%d1%82%d0%b8-%d1%81%d0%b2%d0%be%d1%97-%d1%96-%d0%b7-%d1%8f%d0%ba%d0%be%d1%8e-%d0%bc%d0%b5%d1%82%d0%be%d1%8e">#</a>
+</h2>
+<h2 id="чи-ознайомлені-з-фрагментами-та-порталами-навіщо-вони-потрібні">
+  Чи ознайомлені з фрагментами та порталами? Навіщо вони потрібні?
+  <a class="anchor" href="#%d1%87%d0%b8-%d0%be%d0%b7%d0%bd%d0%b0%d0%b9%d0%be%d0%bc%d0%bb%d0%b5%d0%bd%d1%96-%d0%b7-%d1%84%d1%80%d0%b0%d0%b3%d0%bc%d0%b5%d0%bd%d1%82%d0%b0%d0%bc%d0%b8-%d1%82%d0%b0-%d0%bf%d0%be%d1%80%d1%82%d0%b0%d0%bb%d0%b0%d0%bc%d0%b8-%d0%bd%d0%b0%d0%b2%d1%96%d1%89%d0%be-%d0%b2%d0%be%d0%bd%d0%b8-%d0%bf%d0%be%d1%82%d1%80%d1%96%d0%b1%d0%bd%d1%96">#</a>
+</h2>
+<h2 id="коли-й-для-чого-використовують-рефи">
+  Коли й для чого використовують рефи?
+  <a class="anchor" href="#%d0%ba%d0%be%d0%bb%d0%b8-%d0%b9-%d0%b4%d0%bb%d1%8f-%d1%87%d0%be%d0%b3%d0%be-%d0%b2%d0%b8%d0%ba%d0%be%d1%80%d0%b8%d1%81%d1%82%d0%be%d0%b2%d1%83%d1%8e%d1%82%d1%8c-%d1%80%d0%b5%d1%84%d0%b8">#</a>
+</h2>
+<h2 id="які-ви-знаєте-методи-життєвого-циклу-компонента">
+  Які ви знаєте методи життєвого циклу компонента?
+  <a class="anchor" href="#%d1%8f%d0%ba%d1%96-%d0%b2%d0%b8-%d0%b7%d0%bd%d0%b0%d1%94%d1%82%d0%b5-%d0%bc%d0%b5%d1%82%d0%be%d0%b4%d0%b8-%d0%b6%d0%b8%d1%82%d1%82%d1%94%d0%b2%d0%be%d0%b3%d0%be-%d1%86%d0%b8%d0%ba%d0%bb%d1%83-%d0%ba%d0%be%d0%bc%d0%bf%d0%be%d0%bd%d0%b5%d0%bd%d1%82%d0%b0">#</a>
+</h2>
+<h2 id="в-якому-методі-життєвого-циклу-компонента-краще-робити-запити-на-сервер-чому">
+  В якому методі життєвого циклу компонента краще робити запити на сервер? Чому?
+  <a class="anchor" href="#%d0%b2-%d1%8f%d0%ba%d0%be%d0%bc%d1%83-%d0%bc%d0%b5%d1%82%d0%be%d0%b4%d1%96-%d0%b6%d0%b8%d1%82%d1%82%d1%94%d0%b2%d0%be%d0%b3%d0%be-%d1%86%d0%b8%d0%ba%d0%bb%d1%83-%d0%ba%d0%be%d0%bc%d0%bf%d0%be%d0%bd%d0%b5%d0%bd%d1%82%d0%b0-%d0%ba%d1%80%d0%b0%d1%89%d0%b5-%d1%80%d0%be%d0%b1%d0%b8%d1%82%d0%b8-%d0%b7%d0%b0%d0%bf%d0%b8%d1%82%d0%b8-%d0%bd%d0%b0-%d1%81%d0%b5%d1%80%d0%b2%d0%b5%d1%80-%d1%87%d0%be%d0%bc%d1%83">#</a>
+</h2>
+<h2 id="в-якому-методі-життєвого-циклу-компонента-краще-робити-підписку-і-відписку-від-лістенера-чому-навіщо-відписуватися">
+  В якому методі життєвого циклу компонента краще робити підписку і відписку від лістенера? Чому? Навіщо відписуватися?
+  <a class="anchor" href="#%d0%b2-%d1%8f%d0%ba%d0%be%d0%bc%d1%83-%d0%bc%d0%b5%d1%82%d0%be%d0%b4%d1%96-%d0%b6%d0%b8%d1%82%d1%82%d1%94%d0%b2%d0%be%d0%b3%d0%be-%d1%86%d0%b8%d0%ba%d0%bb%d1%83-%d0%ba%d0%be%d0%bc%d0%bf%d0%be%d0%bd%d0%b5%d0%bd%d1%82%d0%b0-%d0%ba%d1%80%d0%b0%d1%89%d0%b5-%d1%80%d0%be%d0%b1%d0%b8%d1%82%d0%b8-%d0%bf%d1%96%d0%b4%d0%bf%d0%b8%d1%81%d0%ba%d1%83-%d1%96-%d0%b2%d1%96%d0%b4%d0%bf%d0%b8%d1%81%d0%ba%d1%83-%d0%b2%d1%96%d0%b4-%d0%bb%d1%96%d1%81%d1%82%d0%b5%d0%bd%d0%b5%d1%80%d0%b0-%d1%87%d0%be%d0%bc%d1%83-%d0%bd%d0%b0%d0%b2%d1%96%d1%89%d0%be-%d0%b2%d1%96%d0%b4%d0%bf%d0%b8%d1%81%d1%83%d0%b2%d0%b0%d1%82%d0%b8%d1%81%d1%8f">#</a>
+</h2>
+<h2 id="чи-був-досвід-роботи-з-контекстом-коли-його-варто-використовувати">
+  Чи був досвід роботи з контекстом? Коли його варто використовувати?
+  <a class="anchor" href="#%d1%87%d0%b8-%d0%b1%d1%83%d0%b2-%d0%b4%d0%be%d1%81%d0%b2%d1%96%d0%b4-%d1%80%d0%be%d0%b1%d0%be%d1%82%d0%b8-%d0%b7-%d0%ba%d0%be%d0%bd%d1%82%d0%b5%d0%ba%d1%81%d1%82%d0%be%d0%bc-%d0%ba%d0%be%d0%bb%d0%b8-%d0%b9%d0%be%d0%b3%d0%be-%d0%b2%d0%b0%d1%80%d1%82%d0%be-%d0%b2%d0%b8%d0%ba%d0%be%d1%80%d0%b8%d1%81%d1%82%d0%be%d0%b2%d1%83%d0%b2%d0%b0%d1%82%d0%b8">#</a>
+</h2>
+<h2 id="у-чому-особливість-purecomponent">
+  У чому особливість PureComponent?
+  <a class="anchor" href="#%d1%83-%d1%87%d0%be%d0%bc%d1%83-%d0%be%d1%81%d0%be%d0%b1%d0%bb%d0%b8%d0%b2%d1%96%d1%81%d1%82%d1%8c-purecomponent">#</a>
+</h2>
+<h2 id="чи-працював-з-мемоізованими-селекторами-memoized-selectors-для-чого-їх-використовують-і-який-принцип-роботи">
+  Чи працював з мемоізованими селекторами (memoized selectors)? Для чого їх використовують і який принцип роботи?
+  <a class="anchor" href="#%d1%87%d0%b8-%d0%bf%d1%80%d0%b0%d1%86%d1%8e%d0%b2%d0%b0%d0%b2-%d0%b7-%d0%bc%d0%b5%d0%bc%d0%be%d1%96%d0%b7%d0%be%d0%b2%d0%b0%d0%bd%d0%b8%d0%bc%d0%b8-%d1%81%d0%b5%d0%bb%d0%b5%d0%ba%d1%82%d0%be%d1%80%d0%b0%d0%bc%d0%b8-memoized-selectors-%d0%b4%d0%bb%d1%8f-%d1%87%d0%be%d0%b3%d0%be-%d1%97%d1%85-%d0%b2%d0%b8%d0%ba%d0%be%d1%80%d0%b8%d1%81%d1%82%d0%be%d0%b2%d1%83%d1%8e%d1%82%d1%8c-%d1%96-%d1%8f%d0%ba%d0%b8%d0%b9-%d0%bf%d1%80%d0%b8%d0%bd%d1%86%d0%b8%d0%bf-%d1%80%d0%be%d0%b1%d0%be%d1%82%d0%b8">#</a>
+</h2>
+<h2 id="у-чому-бачите-переваги-бібліотеки-react">
+  У чому бачите переваги бібліотеки React?
+  <a class="anchor" href="#%d1%83-%d1%87%d0%be%d0%bc%d1%83-%d0%b1%d0%b0%d1%87%d0%b8%d1%82%d0%b5-%d0%bf%d0%b5%d1%80%d0%b5%d0%b2%d0%b0%d0%b3%d0%b8-%d0%b1%d1%96%d0%b1%d0%bb%d1%96%d0%be%d1%82%d0%b5%d0%ba%d0%b8-react">#</a>
+</h2>
+<h2 id="чому-бібліотека-react-швидка-що-таке-virtual-dom-і-shadow-dom">
+  Чому бібліотека React швидка? Що таке Virtual DOM і Shadow DOM?
+  <a class="anchor" href="#%d1%87%d0%be%d0%bc%d1%83-%d0%b1%d1%96%d0%b1%d0%bb%d1%96%d0%be%d1%82%d0%b5%d0%ba%d0%b0-react-%d1%88%d0%b2%d0%b8%d0%b4%d0%ba%d0%b0-%d1%89%d0%be-%d1%82%d0%b0%d0%ba%d0%b5-virtual-dom-%d1%96-shadow-dom">#</a>
+</h2>
+<h2 id="навіщо-в-списках-ключі-чи-можна-робити-ключами-індекси-елементів-масиву-коли-це-виправдано">
+  Навіщо в списках ключі? Чи можна робити ключами індекси елементів масиву? Коли це виправдано?
+  <a class="anchor" href="#%d0%bd%d0%b0%d0%b2%d1%96%d1%89%d0%be-%d0%b2-%d1%81%d0%bf%d0%b8%d1%81%d0%ba%d0%b0%d1%85-%d0%ba%d0%bb%d1%8e%d1%87%d1%96-%d1%87%d0%b8-%d0%bc%d0%be%d0%b6%d0%bd%d0%b0-%d1%80%d0%be%d0%b1%d0%b8%d1%82%d0%b8-%d0%ba%d0%bb%d1%8e%d1%87%d0%b0%d0%bc%d0%b8-%d1%96%d0%bd%d0%b4%d0%b5%d0%ba%d1%81%d0%b8-%d0%b5%d0%bb%d0%b5%d0%bc%d0%b5%d0%bd%d1%82%d1%96%d0%b2-%d0%bc%d0%b0%d1%81%d0%b8%d0%b2%d1%83-%d0%ba%d0%be%d0%bb%d0%b8-%d1%86%d0%b5-%d0%b2%d0%b8%d0%bf%d1%80%d0%b0%d0%b2%d0%b4%d0%b0%d0%bd%d0%be">#</a>
+</h2>
+<h2 id="в-чому-основна-ідея-redux">
+  В чому основна ідея Redux?
+  <a class="anchor" href="#%d0%b2-%d1%87%d0%be%d0%bc%d1%83-%d0%be%d1%81%d0%bd%d0%be%d0%b2%d0%bd%d0%b0-%d1%96%d0%b4%d0%b5%d1%8f-redux">#</a>
+</h2>
+<h2 id="робота-зі-стилями-в-react">
+  Робота зі стилями в React.
+  <a class="anchor" href="#%d1%80%d0%be%d0%b1%d0%be%d1%82%d0%b0-%d0%b7%d1%96-%d1%81%d1%82%d0%b8%d0%bb%d1%8f%d0%bc%d0%b8-%d0%b2-react">#</a>
+</h2>
+<h2 id="react--це-бібліотека-чи-фреймворк-яка-різниця-між-цими-двома-поняттями">
+  React — це бібліотека чи фреймворк? Яка різниця між цими двома поняттями.
+  <a class="anchor" href="#react--%d1%86%d0%b5-%d0%b1%d1%96%d0%b1%d0%bb%d1%96%d0%be%d1%82%d0%b5%d0%ba%d0%b0-%d1%87%d0%b8-%d1%84%d1%80%d0%b5%d0%b9%d0%bc%d0%b2%d0%be%d1%80%d0%ba-%d1%8f%d0%ba%d0%b0-%d1%80%d1%96%d0%b7%d0%bd%d0%b8%d1%86%d1%8f-%d0%bc%d1%96%d0%b6-%d1%86%d0%b8%d0%bc%d0%b8-%d0%b4%d0%b2%d0%be%d0%bc%d0%b0-%d0%bf%d0%be%d0%bd%d1%8f%d1%82%d1%82%d1%8f%d0%bc%d0%b8">#</a>
+</h2>
+<h2 id="чи-можна-використовувати-jquery-разом-з-react-чому-так--ні">
+  Чи можна використовувати jQuery разом з React? Чому так / ні?
+  <a class="anchor" href="#%d1%87%d0%b8-%d0%bc%d0%be%d0%b6%d0%bd%d0%b0-%d0%b2%d0%b8%d0%ba%d0%be%d1%80%d0%b8%d1%81%d1%82%d0%be%d0%b2%d1%83%d0%b2%d0%b0%d1%82%d0%b8-jquery-%d1%80%d0%b0%d0%b7%d0%be%d0%bc-%d0%b7-react-%d1%87%d0%be%d0%bc%d1%83-%d1%82%d0%b0%d0%ba--%d0%bd%d1%96">#</a>
+</h2>
+<h2 id="що-таке-codemod">
+  Що таке codemod?
+  <a class="anchor" href="#%d1%89%d0%be-%d1%82%d0%b0%d0%ba%d0%b5-codemod">#</a>
+</h2>
+<h2 id="чи-доводилося-налаштовувати-проєкт-react-з-нуля-за-допомогою-яких-інструментів-ви-це-робили">
+  Чи доводилося налаштовувати проєкт React з нуля? За допомогою яких інструментів ви це робили?
+  <a class="anchor" href="#%d1%87%d0%b8-%d0%b4%d0%be%d0%b2%d0%be%d0%b4%d0%b8%d0%bb%d0%be%d1%81%d1%8f-%d0%bd%d0%b0%d0%bb%d0%b0%d1%88%d1%82%d0%be%d0%b2%d1%83%d0%b2%d0%b0%d1%82%d0%b8-%d0%bf%d1%80%d0%be%d1%94%d0%ba%d1%82-react-%d0%b7-%d0%bd%d1%83%d0%bb%d1%8f-%d0%b7%d0%b0-%d0%b4%d0%be%d0%bf%d0%be%d0%bc%d0%be%d0%b3%d0%be%d1%8e-%d1%8f%d0%ba%d0%b8%d1%85-%d1%96%d0%bd%d1%81%d1%82%d1%80%d1%83%d0%bc%d0%b5%d0%bd%d1%82%d1%96%d0%b2-%d0%b2%d0%b8-%d1%86%d0%b5-%d1%80%d0%be%d0%b1%d0%b8%d0%bb%d0%b8">#</a>
+</h2>
+<h2 id="перерахуйте-всі-бібліотеки-які-використовували-у-звязці-з-react">
+  Перерахуйте всі бібліотеки, які використовували у зв’язці з React.
+  <a class="anchor" href="#%d0%bf%d0%b5%d1%80%d0%b5%d1%80%d0%b0%d1%85%d1%83%d0%b9%d1%82%d0%b5-%d0%b2%d1%81%d1%96-%d0%b1%d1%96%d0%b1%d0%bb%d1%96%d0%be%d1%82%d0%b5%d0%ba%d0%b8-%d1%8f%d0%ba%d1%96-%d0%b2%d0%b8%d0%ba%d0%be%d1%80%d0%b8%d1%81%d1%82%d0%be%d0%b2%d1%83%d0%b2%d0%b0%d0%bb%d0%b8-%d1%83-%d0%b7%d0%b2%d1%8f%d0%b7%d1%86%d1%96-%d0%b7-react">#</a>
+</h2>
+<h2 id="що-найскладніше-доводилося-реалізовувати-за-допомогою-react">
+  Що найскладніше доводилося реалізовувати за допомогою React?
+  <a class="anchor" href="#%d1%89%d0%be-%d0%bd%d0%b0%d0%b9%d1%81%d0%ba%d0%bb%d0%b0%d0%b4%d0%bd%d1%96%d1%88%d0%b5-%d0%b4%d0%be%d0%b2%d0%be%d0%b4%d0%b8%d0%bb%d0%be%d1%81%d1%8f-%d1%80%d0%b5%d0%b0%d0%bb%d1%96%d0%b7%d0%be%d0%b2%d1%83%d0%b2%d0%b0%d1%82%d0%b8-%d0%b7%d0%b0-%d0%b4%d0%be%d0%bf%d0%be%d0%bc%d0%be%d0%b3%d0%be%d1%8e-react">#</a>
+</h2>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#чи-працювали-з-класовими-компонентами-у-чому-їхня-особливість">Чи працювали з класовими компонентами? У чому їхня особливість?</a></li>
+    <li><a href="#які-дані-краще-зберігати-в-стані-компонента-а-які-передавати-через-пропси-наведіть-приклад">Які дані краще зберігати в стані компонента, а які передавати через пропси? Наведіть приклад.</a></li>
+    <li><a href="#чи-ознайомлені-з-хуками-у-чому-їхні-переваги-чи-доводилося-робити-свої-і-з-якою-метою">Чи ознайомлені з хуками? У чому їхні переваги? Чи доводилося робити свої і з якою метою?</a></li>
+    <li><a href="#чи-ознайомлені-з-фрагментами-та-порталами-навіщо-вони-потрібні">Чи ознайомлені з фрагментами та порталами? Навіщо вони потрібні?</a></li>
+    <li><a href="#коли-й-для-чого-використовують-рефи">Коли й для чого використовують рефи?</a></li>
+    <li><a href="#які-ви-знаєте-методи-життєвого-циклу-компонента">Які ви знаєте методи життєвого циклу компонента?</a></li>
+    <li><a href="#в-якому-методі-життєвого-циклу-компонента-краще-робити-запити-на-сервер-чому">В якому методі життєвого циклу компонента краще робити запити на сервер? Чому?</a></li>
+    <li><a href="#в-якому-методі-життєвого-циклу-компонента-краще-робити-підписку-і-відписку-від-лістенера-чому-навіщо-відписуватися">В якому методі життєвого циклу компонента краще робити підписку і відписку від лістенера? Чому? Навіщо відписуватися?</a></li>
+    <li><a href="#чи-був-досвід-роботи-з-контекстом-коли-його-варто-використовувати">Чи був досвід роботи з контекстом? Коли його варто використовувати?</a></li>
+    <li><a href="#у-чому-особливість-purecomponent">У чому особливість PureComponent?</a></li>
+    <li><a href="#чи-працював-з-мемоізованими-селекторами-memoized-selectors-для-чого-їх-використовують-і-який-принцип-роботи">Чи працював з мемоізованими селекторами (memoized selectors)? Для чого їх використовують і який принцип роботи?</a></li>
+    <li><a href="#у-чому-бачите-переваги-бібліотеки-react">У чому бачите переваги бібліотеки React?</a></li>
+    <li><a href="#чому-бібліотека-react-швидка-що-таке-virtual-dom-і-shadow-dom">Чому бібліотека React швидка? Що таке Virtual DOM і Shadow DOM?</a></li>
+    <li><a href="#навіщо-в-списках-ключі-чи-можна-робити-ключами-індекси-елементів-масиву-коли-це-виправдано">Навіщо в списках ключі? Чи можна робити ключами індекси елементів масиву? Коли це виправдано?</a></li>
+    <li><a href="#в-чому-основна-ідея-redux">В чому основна ідея Redux?</a></li>
+    <li><a href="#робота-зі-стилями-в-react">Робота зі стилями в React.</a></li>
+    <li><a href="#react--це-бібліотека-чи-фреймворк-яка-різниця-між-цими-двома-поняттями">React — це бібліотека чи фреймворк? Яка різниця між цими двома поняттями.</a></li>
+    <li><a href="#чи-можна-використовувати-jquery-разом-з-react-чому-так--ні">Чи можна використовувати jQuery разом з React? Чому так / ні?</a></li>
+    <li><a href="#що-таке-codemod">Що таке codemod?</a></li>
+    <li><a href="#чи-доводилося-налаштовувати-проєкт-react-з-нуля-за-допомогою-яких-інструментів-ви-це-робили">Чи доводилося налаштовувати проєкт React з нуля? За допомогою яких інструментів ви це робили?</a></li>
+    <li><a href="#перерахуйте-всі-бібліотеки-які-використовували-у-звязці-з-react">Перерахуйте всі бібліотеки, які використовували у зв’язці з React.</a></li>
+    <li><a href="#що-найскладніше-доводилося-реалізовувати-за-допомогою-react">Що найскладніше доводилося реалізовувати за допомогою React?</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
